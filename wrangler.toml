@@ -1,0 +1,7 @@
+# Cloudflare Worker 部署配置
+# main 告诉 wrangler：入口文件是 cloudflare/worker.js
+# name 是 Worker 的名字——如果你在 Cloudflare 面板建 Worker 时用了别的名字，
+# 把下面这行改成和面板一致（面板 Worker 页面的标题就是名字）
+name = "chat-proxy"
+main = "cloudflare/worker.js"
+compatibility_date = "2024-07-01"
