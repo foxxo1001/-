@@ -83,7 +83,7 @@ export default {
           model: model,
           messages: [{ role: "system", content: SYSTEM_PROMPT }, ...history],
           temperature: 0.7,
-          max_tokens: 400,
+          max_tokens: 1500,
         }),
       });
 

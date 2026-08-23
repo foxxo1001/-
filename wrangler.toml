@@ -5,3 +5,8 @@
 name = "chat-proxy"
 main = "cloudflare/worker.js"
 compatibility_date = "2024-07-01"
+
+# 模型接口配置（非密钥部分；LLM_API_KEY 用 secret 存，不进仓库）
+[vars]
+LLM_API_URL = "https://opencode.ai/zen/v1/chat/completions"
+LLM_MODEL = "hy3-free"
