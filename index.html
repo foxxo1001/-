@@ -501,8 +501,8 @@
     .now-row{grid-template-columns:1fr;gap:8px;padding:26px 4px}
     .now-arrow{display:none}
     .acc{flex-direction:column;height:auto}
-    .acc-item{height:196px}
-    .acc-item:hover{flex:1}
+    .acc-item{flex:none;height:196px}
+    .acc-item:hover,.acc-item.on{flex:none}
     .acc-desc{opacity:1;transform:none;max-width:none}
   }
 
@@ -574,8 +574,12 @@
     .nav.open .nav-links{max-height:264px}
     .nav-links a{padding:15px 28px;border-top:1px solid var(--line)}
     .nav-links a::after{display:none}
-    .chat-body{height:300px}
+    .chat-body{height:300px;padding:20px 16px}
     .chat-tag{display:none}
+    .chat-sugs{gap:8px;padding:12px 16px 0}
+    .sug{font-size:12px;padding:6px 13px}
+    .chat-input{padding:12px 16px 16px}
+    .chat-input input{font-size:16px}
   }
   @media (prefers-reduced-motion:reduce){
     *,*::before,*::after{animation:none!important;transition:none!important}
