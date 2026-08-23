@@ -794,8 +794,7 @@
         <div class="msg bot">
           <div class="msg-ava">F</div>
           <div class="msg-bubble" data-i18n="chat.greet">
-            您好，我是蒲桢的数字分身。关于他目前的工作、未来规划，以及对嵌入式与
-            AI 的看法，可以直接提问，或使用下方快捷问题。
+            你好，我是蒲桢的数字分身。他在做什么、怎么联系，这些我能答；不确定的我会直说，不瞎编。下面的快捷问题也可以点。
           </div>
         </div>
       </div>
@@ -877,59 +876,47 @@
   const chatInput = document.getElementById('chatInput');
   const sendBtn = document.getElementById('sendBtn');
 
-  // 知识库：按优先级从上到下匹配关键词，中英双语
+  // 知识库：只讲已确认的事实，不知道就直说并引导邮件确认
   const KNOWLEDGE = [
     { keys: ['最近','在干','在忙','忙什么','做什么','干嘛','now','lately','up to','busy','doing'],
-      reply: '近期以嵌入式学习为主线，从 STM32 与传感器驱动等基础入手系统推进；同期备战数学建模竞赛，重点训练建模与编程能力。课余持续研究 AI agent 在开发流程中的实际应用。',
-      en: "My current focus is embedded systems — working through STM32 and sensor drivers systematically — alongside preparation for the math-modeling contest, where I train modeling and coding. Beyond that, I keep exploring how AI agents can fit into real development workflows." },
+      reply: '最近主要两件事：学嵌入式，备战数学建模。',
+      en: "Two things lately: learning embedded systems, and preparing for a math-modeling contest." },
     { keys: ['规划','未来','打算','计划','以后','展望','plan','future','goal'],
-      reply: '短期：夯实嵌入式基础，完成一至两个完整项目，并在数模竞赛中取得理想成绩。中期：探索 AI 与嵌入式的结合，重点关注端侧智能。长期：希望加入认同这一技术方向的团队。',
-      en: "Short term: solidify embedded fundamentals and complete one or two full projects, with a strong contest result. Mid term: explore the intersection of AI and embedded systems, especially on-device intelligence. Long term: join a team that shares this direction." },
+      reply: '说实话这个我不确定，不想替他编。建议直接邮件问他，页脚有联系方式。',
+      en: "Honestly, I'm not sure — and I'd rather not make it up. Best to email him directly; the address is in the footer." },
     { keys: ['联系','邮箱','邮件','微信','方式','加你','contact','email','github','reach'],
-      replyHtml: '推荐通过邮件联系：<a href="mailto:p3358859283@outlook.com?subject=来自你的个人主页">p3358859283@outlook.com</a>，点击即可唤起邮件客户端。代码与项目将陆续发布于 GitHub：<a href="https://github.com/foxxo1001" target="_blank" rel="noopener noreferrer">foxxo1001</a>。',
-      replyHtmlEn: 'The most reliable channel is email: <a href="mailto:p3358859283@outlook.com?subject=Hello%20from%20your%20page">p3358859283@outlook.com</a> — the link opens your mail client. Code and projects will be published on GitHub: <a href="https://github.com/foxxo1001" target="_blank" rel="noopener noreferrer">foxxo1001</a>.' },
+      replyHtml: '邮件：<a href="mailto:p3358859283@outlook.com?subject=来自你的个人主页">p3358859283@outlook.com</a>（点击即可发信）。GitHub：<a href="https://github.com/foxxo1001" target="_blank" rel="noopener noreferrer">foxxo1001</a>。拿不准的事，邮件问最靠谱。',
+      replyHtmlEn: 'Email: <a href="mailto:p3358859283@outlook.com?subject=Hello%20from%20your%20page">p3358859283@outlook.com</a> — the link opens your mail client. GitHub: <a href="https://github.com/foxxo1001" target="_blank" rel="noopener noreferrer">foxxo1001</a>. For anything uncertain, email is the safest bet.' },
     { keys: ['作品','项目','做过','东西','portfolio','works','project'],
-      reply: '作品正在持续积累中，目前包括若干嵌入式小项目与一套 AI agent 辅助开发工作流，完善后将统一发布于本页面。',
-      en: "My portfolio is growing steadily — several small embedded projects and an AI-agent-assisted development workflow. They will be published on this page once polished." },
+      reply: '作品还在积累中，暂时没有放出链接。有进展他会更新到这个页面。',
+      en: "Still in progress — nothing published yet. He'll update this page once there's something to show." },
     { keys: ['嵌入式','单片机','stm32','硬件','底层','电路','embedded','mcu','hardware'],
-      reply: '嵌入式是我当前的学习主线。我的原则是轻量优先：不依赖重型框架与工具链，以最合适的工具解决问题。目前正在学习 STM32、常用通信接口与传感器驱动。',
-      en: "Embedded is my primary track. My principle is to keep things lean: no heavy frameworks or toolchains — the right tool for the problem. Currently studying STM32, common communication buses and sensor drivers." },
+      reply: '嵌入式是他现在主要在学的东西。学到了哪一步我不好替他细说，想聊细节可以邮件问他。',
+      en: "Embedded systems are what he's mainly learning right now. For details I'd rather not speak for him — email him if you're curious." },
     { keys: ['ai','agent','智能','大模型','人工智能','gpt','llm','intelligence'],
-      reply: '我对 AI 的关注点在应用层面，尤其是 agent 辅助开发：由 agent 承担资料检索、测试生成与笔记整理，我将精力集中于设计与调试。AI 与嵌入式的结合（端侧智能）是我最看好的方向。',
-      en: "My interest in AI lies in application, not model training — especially agent-assisted development: agents handle research, test generation and notes, while I focus on design and debugging. The combination of AI and embedded systems (edge intelligence) is the direction I believe in most." },
+      reply: 'AI 是他长期关注的方向，重点是发展与落地应用；平时也在学着用 AI agent 辅助开发和学习。',
+      en: "AI is his long-term focus — its development and real-world applications. He also uses AI agents to support his daily study and development." },
     { keys: ['数模','建模','比赛','竞赛','数学','math','contest','modeling','competition'],
-      reply: '正在备战数学建模竞赛，负责建模与编程环节。备赛与嵌入式开发有共通之处：能力来自持续的动手实践与积累。',
-      en: "I am preparing for the math-modeling contest, responsible for modeling and programming. Contest preparation resembles embedded work: competence is built through sustained hands-on practice." },
+      reply: '正在备战数学建模竞赛。',
+      en: "He's preparing for a math-modeling contest." },
     { keys: ['专业','学校','大几','学生','读什么','学什么专业','major','school','sophomore','study'],
-      reply: '我是蒲桢，电子科学与技术专业大二学生。该专业覆盖软硬件两个层面，与我的技术路线高度契合。',
-      en: "I am Pu Zhen, a sophomore in Electronic Science & Technology. The major spans both hardware and software, which aligns closely with my chosen direction." },
+      reply: '电子科学与技术专业，大二在读。',
+      en: "Electronic Science & Technology, sophomore year." },
     { keys: ['你是谁','介绍','自我','who','yourself'],
-      reply: '我是蒲桢——电子科学与技术专业大二学生，正在系统学习嵌入式开发，并将 AI agent 应用于日常开发与学习。我的原则是：工具务求简单，产出务求可靠。',
-      en: "I am Pu Zhen, a sophomore in Electronic Science & Technology, systematically learning embedded development and applying AI agents to my daily workflow. My principle: keep tools simple and output reliable." },
+      reply: '蒲桢，电子科学与技术专业大二在读。在学嵌入式、备数模，长期关注 AI 的发展与应用。',
+      en: "Pu Zhen — a sophomore in Electronic Science & Technology. Learning embedded systems, preparing for a math-modeling contest, with a long-term interest in AI and its applications." },
     { keys: ['蒲桢','真名','本名','名字','pu zhen','real name','name'],
-      reply: '我叫蒲桢。课堂、简历与代码提交记录均使用本名。',
-      en: "My name is Pu Zhen — used consistently across my class roster, résumé and commit history." },
+      reply: '蒲桢是他的本名。',
+      en: "Pu Zhen is his real name." },
     { keys: ['你好','hello','hi','在吗','嗨','哈喽','hey'],
-      reply: '您好，我是蒲桢的数字分身。可以询问我近期的工作、未来规划，或对嵌入式与 AI 的看法，也可使用下方快捷问题。',
-      en: "Hello — I am Pu Zhen's digital twin. Feel free to ask about his recent work, future plans, or his views on embedded systems and AI. The quick questions below also work." },
+      reply: '你好，我是蒲桢的数字分身。他在做什么、怎么联系，这些我能答；不确定的我会直说，不瞎编。下面的快捷问题也可以点。',
+      en: "Hello — I'm Pu Zhen's digital twin. I can tell you what he's up to and how to reach him; if I'm not sure, I'll say so. The quick questions below work too." },
     { keys: ['风格','特点','习惯','喜欢','style','habit'],
-      reply: '我的风格是「轻量便携」：能以一行代码解决的不写十行，能以小工具完成的不引入大型框架。简洁，且可靠。',
-      en: "My signature style is lean and portable: one line over ten, small tools over large frameworks. Simple, and reliable." },
-    { keys: ['工具','用什么','软件','编辑器','ide','设备','tools','stack','editor'],
-      reply: '工具链保持轻量：编码使用 VS Code 与 PlatformIO；笔记以 Markdown 配合 Git 管理；AI 侧由多个 agent 分别负责资料检索与测试生成。可由命令行完成的任务，不引入图形界面。',
-      en: "My toolchain stays light: VS Code with PlatformIO for development, Markdown with Git for notes, and a small set of agents for research and testing. If a task can be handled in the CLI, I skip the GUI." },
-    { keys: ['爱好','兴趣','空闲','休闲','周末','hobby','free time','spare'],
-      reply: '业余时间主要用于研究 AI 应用与新型硬件，关注优秀项目的实现方式。对我而言，兴趣与学习是一体的：核心都在于把事物理解透彻。',
-      en: "My spare time goes to AI applications and new hardware, studying how well-built projects work. For me, interest and study are one and the same: understanding how things actually work." },
-    { keys: ['为什么选','选这个','选电子','原因','why'],
-      reply: '选择电子科学与技术，是因为它位于软硬件的交界：向下可以接触电路与芯片，向上可以衔接代码与 AI。交界处的问题最具价值，我希望在此深耕。',
-      en: "I chose Electronic Science & Technology because it sits at the hardware-software junction: circuits and chips below, code and AI above. The most valuable problems live at that junction, and I intend to go deep there." },
-    { keys: ['建议','怎么学','入门','新手','学习路线','经验','advice','beginner','start','tips'],
-      reply: '我的经验有三条：动手优先、工具从简、让 AI 承担助教角色而非代写。对嵌入式尤其如此——知识需要足够的实践才能真正掌握。',
-      en: "Three rules from my experience: practice first, keep tools light, and use AI as a teaching assistant rather than a ghostwriter. This is especially true for embedded systems — knowledge truly sticks only after sufficient hands-on practice." },
+      reply: '他偏爱轻量、简单的开发方式——这是他自己强调过的。',
+      en: "He prefers a lean, simple way of building things — his own words." },
   ];
-  const FALLBACK = '该问题暂超出我的知识范围。您可以询问：近期动态、未来规划、联系方式、作品进展，或嵌入式与 AI 相关话题。';
-  const FALLBACK_EN = "That question is beyond my current scope. You may ask about recent work, future plans, contact information, works, or topics related to embedded systems and AI.";
+  const FALLBACK = '这个我不确定，不想瞎猜。建议通过页脚的邮箱直接问蒲桢本人。';
+  const FALLBACK_EN = "I'm not sure about that, and I won't guess. Your best move is to email Pu Zhen directly — the address is in the footer.";
 
   function findEntry(q) {
     const s = q.toLowerCase();
@@ -1032,7 +1019,7 @@
     'chat.title':['数字分身','Digital Twin'],
     'chat.desc':['本区块由数字分身值守，可就近况、规划与方向直接提问。','Staffed by my digital twin — ask about my current work, plans and direction.'],
     'chat.name':['蒲桢的分身',"Pu Zhen's Twin"], 'chat.status':['在线 · 即时回复','Online · instant replies'],
-    'chat.greet':['您好，我是蒲桢的数字分身。关于他目前的工作、未来规划，以及对嵌入式与 AI 的看法，可以直接提问，或使用下方快捷问题。',"Hello — I'm Pu Zhen's digital twin. Ask about his current work, future plans, or his views on embedded systems and AI. The quick questions below also work."],
+    'chat.greet':['你好，我是蒲桢的数字分身。他在做什么、怎么联系，这些我能答；不确定的我会直说，不瞎编。下面的快捷问题也可以点。',"Hello — I'm Pu Zhen's digital twin. I can tell you what he's up to and how to reach him; if I'm not sure, I'll say so. The quick questions below work too."],
     'sug1':['你最近在干什么？','What are you up to lately?'],
     'sug2':['未来的规划是什么？',"What's the plan ahead?"],
     'sug3':['怎么联系你？','How can I reach you?'],
