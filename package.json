@@ -1,0 +1,11 @@
+{
+  "name": "puzhen-homepage",
+  "private": true,
+  "description": "蒲桢的个人主页：静态页面 + Cloudflare Worker 数字分身中转",
+  "scripts": {
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "3.63.0"
+  }
+}
