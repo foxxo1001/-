@@ -876,6 +876,10 @@
   const chatInput = document.getElementById('chatInput');
   const sendBtn = document.getElementById('sendBtn');
 
+  // 真分身接口：按 cloudflare/部署指南.md 部署后，把 Worker 地址填到这里。
+  // 留空 = 未接入，自动使用下方本地规则问答（离线可用）。
+  const CHAT_API = '';
+
   // 知识库：只讲已确认的事实，不知道就直说并引导邮件确认
   const KNOWLEDGE = [
     { keys: ['最近','在干','在忙','忙什么','做什么','干嘛','now','lately','up to','busy','doing'],
@@ -945,26 +949,58 @@
   }
 
   let busy = false;
-  function ask(q) {
+  const chatHistory = []; // 对话记忆：接入云端真分身时携带最近上下文
+  async function ask(q) {
     q = (q || '').trim();
     if (!q || busy) return;
     busy = true;
     addMsg('user', q);
+    chatHistory.push({ role: 'user', content: q });
     chatInput.value = '';
     sendBtn.disabled = true;
     showTyping();
+
+    // 优先请求云端真分身；未配置或失败时自动退回本地规则问答
+    if (CHAT_API) {
+      try {
+        const ctrl = new AbortController();
+        const timer = setTimeout(() => ctrl.abort(), 15000);
+        const res = await fetch(CHAT_API, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ messages: chatHistory.slice(-10) }),
+          signal: ctrl.signal
+        });
+        clearTimeout(timer);
+        if (res.ok) {
+          const data = await res.json();
+          if (data.reply) {
+            document.getElementById('typing')?.remove();
+            addMsg('bot', data.reply);
+            chatHistory.push({ role: 'assistant', content: data.reply });
+            busy = false;
+            sendBtn.disabled = false;
+            chatInput.focus();
+            return;
+          }
+        }
+      } catch (e) { /* 网络异常，走本地兜底 */ }
+    }
+
     const entry = findEntry(q);
     setTimeout(() => {
       document.getElementById('typing')?.remove();
       const zh = lang === 'zh';
       const htmlReply = zh ? entry && entry.replyHtml : entry && entry.replyHtmlEn;
       const plainReply = zh ? (entry && entry.reply) || FALLBACK : (entry && entry.en) || FALLBACK_EN;
-      if (htmlReply) addMsg('bot', htmlReply, true);
-      else addMsg('bot', plainReply);
+      const text = htmlReply || plainReply;
+      if (htmlReply) addMsg('bot', text, true);
+      else addMsg('bot', text);
+      chatHistory.push({ role: 'assistant', content: text });
       busy = false;
       sendBtn.disabled = false;
       chatInput.focus();
-    }, 650 + Math.random() * 500);
+    }, 500 + Math.random() * 400);
   }
 
   chatForm.addEventListener('submit', e => {
