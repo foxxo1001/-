@@ -482,6 +482,12 @@
     opacity:0;transform:translateY(10px);transition:.45s .12s;
   }
   .acc-item:hover .acc-desc,.acc-item.on .acc-desc{opacity:1;transform:none}
+  .acc-link{
+    margin-top:5px;font-family:var(--mono);font-size:11px;font-weight:700;
+    letter-spacing:.1em;color:rgba(247,249,252,.85);
+    text-decoration:underline;text-underline-offset:4px;transition:color .2s;
+  }
+  .acc-link:hover{color:#fff}
   .works-note{margin-top:18px;font-size:12.5px;color:var(--ink-3)}
 
   /* ---------- 大 CTA ---------- */
@@ -742,9 +748,18 @@
       <h2 class="sec-title" data-i18n="works.title">作品与方向</h2>
       <div class="sec-rule"></div>
     </div>
-    <p class="sec-desc reveal" data-i18n="works.desc">部分作品仍在完善中。以下为当前推进的三个方向，悬停或点击查看详情。</p>
+    <p class="sec-desc reveal" data-i18n="works.desc">部分作品仍在完善中。以下为当前推进的四个方向，悬停或点击查看详情。</p>
 
     <div class="acc reveal">
+      <article class="acc-item">
+        <img class="acc-img" src="https://picsum.photos/seed/line-follower/900/1300" alt="八路红外循迹小车项目配图" loading="lazy">
+        <div class="acc-panel">
+          <span class="acc-tag" data-i18n="works.t0">嵌入式 · 已发布</span>
+          <h3 class="acc-name" data-i18n="works.n0">八路红外循迹小车</h3>
+          <p class="acc-desc" data-i18n="works.d0">基于 STM32 的循迹小车：八路红外加权定位、PD 差速转向与弯道降速，支持按键启停与丢线找回，提供 CMake 与 Keil 工程。</p>
+          <a class="acc-link" href="https://atomgit.com/PZ1888/xunji_demo_1" target="_blank" rel="noopener noreferrer" data-i18n="works.l0">查看仓库 ↗</a>
+        </div>
+      </article>
       <article class="acc-item">
         <img class="acc-img" src="https://picsum.photos/seed/weather-station/900/1300" alt="桌面气象站项目配图" loading="lazy">
         <div class="acc-panel">
@@ -896,8 +911,8 @@
       replyHtml: '邮件：<a href="mailto:p3358859283@outlook.com?subject=来自你的个人主页">p3358859283@outlook.com</a>（点击即可发信）。GitHub：<a href="https://github.com/foxxo1001" target="_blank" rel="noopener noreferrer">foxxo1001</a>。拿不准的事，邮件问最靠谱。',
       replyHtmlEn: 'Email: <a href="mailto:p3358859283@outlook.com?subject=Hello%20from%20your%20page">p3358859283@outlook.com</a> — the link opens your mail client. GitHub: <a href="https://github.com/foxxo1001" target="_blank" rel="noopener noreferrer">foxxo1001</a>. For anything uncertain, email is the safest bet.' },
     { keys: ['作品','项目','做过','东西','portfolio','works','project'],
-      reply: '作品还在积累中，暂时没有放出链接。有进展他会更新到这个页面。',
-      en: "Still in progress — nothing published yet. He'll update this page once there's something to show." },
+      replyHtml: '已发布第一个完整作品：<a href="https://atomgit.com/PZ1888/xunji_demo_1" target="_blank" rel="noopener noreferrer">基于 STM32 的八路红外循迹小车</a>——八路红外加权定位、PD 差速转向、弯道降速与丢线找回，代码已开源。桌面气象站、Agent 学习流水线与数模复盘手册也在推进中。',
+      replyHtmlEn: 'First released work: <a href="https://atomgit.com/PZ1888/xunji_demo_1" target="_blank" rel="noopener noreferrer">an STM32 8-channel IR line-following car</a> — weighted IR positioning, PD differential steering, corner slowdown and line-loss recovery, open source on AtomGit. A desk weather station, agent pipeline and contest retrospectives are also in progress.' },
     { keys: ['嵌入式','单片机','stm32','硬件','底层','电路','embedded','mcu','hardware'],
       reply: '嵌入式是他现在主要在学的东西。学到了哪一步我不好替他细说，想聊细节可以邮件问他。',
       en: "Embedded systems are what he's mainly learning right now. For details I'd rather not speak for him — email him if you're curious." },
@@ -1048,14 +1063,17 @@
     'now.s3':['日常','Daily'], 'now.n3':['AI agent 工作流','AI Agent Pipeline'],
     'now.d3':['构建 agent 辅助工作流：承担检索与整理，核心决策由本人完成。','Building an agent-assisted workflow for research and organization — I retain the final calls.'],
     'works.title':['作品与方向','Works & Directions'],
-    'works.desc':['部分作品仍在完善中。以下为当前推进的三个方向，悬停或点击查看详情。','Some works are still in progress. Below are the three directions I am advancing — hover or tap for details.'],
+    'works.desc':['部分作品仍在完善中。以下为当前推进的四个方向，悬停或点击查看详情。','Some works are still in progress. Below are the four directions I am advancing — hover or tap for details.'],
+    'works.t0':['嵌入式 · 已发布','Embedded · Released'], 'works.n0':['八路红外循迹小车','8-Ch IR Line-Follower'],
+    'works.d0':['基于 STM32 的循迹小车：八路红外加权定位、PD 差速转向与弯道降速，支持按键启停与丢线找回，提供 CMake 与 Keil 工程。','An STM32 line-following car: 8-channel IR weighted positioning, PD differential steering and corner slowdown — button start/stop, line-loss recovery, with both CMake and Keil projects.'],
+    'works.l0':['查看仓库 ↗','View Repo ↗'],
     'works.t1':['嵌入式 · 打磨中','Embedded · Polishing'], 'works.n1':['桌面气象站','Desk Weather Station'],
     'works.d1':['基于单板实现环境感知：温湿度采集、OLED 显示与串口上报，以精简硬件完成核心功能。','A single-board environment monitor: temperature and humidity sensing, OLED display and serial reporting — minimal parts, complete function.'],
     'works.t2':['AI · 搭建中','AI · Building'], 'works.n2':['Agent 学习流水线','Agent Study Pipeline'],
     'works.d2':['将资料检索、测试生成与笔记整理整合为 agent 工作流，定位是辅助而非替代。','Research, test generation and notes — integrated into one agent workflow. Assistance, not replacement.'],
     'works.t3':['数模 · 更新中','Math Modeling · Updating'], 'works.n3':['数模复盘手册','Contest Retrospectives'],
     'works.d3':['对历年赛题的建模思路与代码实现进行系统复盘，按题型归档，作为核心备赛资料。','Systematic reviews of past problems — models, code and lessons — archived by type for contest preparation.'],
-    'works.note':['配图为占位示意，作品完善后将替换为实物照片与项目链接。','Placeholder images — real photos and project links will replace them as the work is completed.'],
+    'works.note':['配图为占位示意，作品完善后将替换为实物照片。','Placeholder images — real photos will replace them as the work is completed.'],
     'chat.title':['数字分身','Digital Twin'],
     'chat.desc':['本区块由数字分身值守，可就近况、规划与方向直接提问。','Staffed by my digital twin — ask about my current work, plans and direction.'],
     'chat.name':['蒲桢的分身',"Pu Zhen's Twin"], 'chat.status':['在线 · 即时回复','Online · instant replies'],
