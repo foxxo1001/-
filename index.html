@@ -488,6 +488,37 @@
     text-decoration:underline;text-underline-offset:4px;transition:color .2s;
   }
   .acc-link:hover{color:#fff}
+  .acc-chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:3px}
+  .acc-chip{
+    font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.08em;
+    color:rgba(247,249,252,.92);border:1px solid rgba(247,249,252,.38);
+    border-radius:999px;padding:4px 11px;white-space:nowrap;
+  }
+
+  /* ---------- 工具栈 ---------- */
+  .stack-sec{padding:104px 0}
+  .stack-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    border-top:1px solid var(--line);
+  }
+  .stack-group{padding:30px 26px 0 0;border-right:1px solid var(--line)}
+  .stack-group:last-child{border-right:none;padding-right:0}
+  .stack-label{
+    font-family:var(--mono);font-size:11px;font-weight:700;
+    letter-spacing:.18em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:18px;
+  }
+  .stack-chips{display:flex;flex-wrap:wrap;gap:8px;padding-bottom:26px}
+  .chip{
+    font-size:13px;font-weight:600;color:var(--ink-2);
+    border:1px solid var(--line);border-radius:999px;
+    padding:7px 15px;background:var(--card);
+    transition:border-color .22s,color .22s,background .22s,transform .22s;
+  }
+  .chip:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);transform:translateY(-2px)}
+
+  /* ---------- 关于本站 ---------- */
+  .meta-sec{padding:104px 0 120px}
   .works-note{margin-top:18px;font-size:12.5px;color:var(--ink-3)}
 
   /* ---------- 大 CTA ---------- */
@@ -565,6 +596,10 @@
     .hero-bottom{flex-direction:column;gap:26px;margin-top:30px;padding-top:26px}
     .hero-cta{width:100%}
     .info-grid{grid-template-columns:1fr}
+    .stack-grid{grid-template-columns:1fr}
+    .stack-group{border-right:none;border-bottom:1px solid var(--line);padding:26px 0 0}
+    .stack-group:last-child{border-bottom:none}
+    .stack-chips{padding-bottom:22px}
     .info-item:nth-child(odd){border-right:none;padding-left:0}
     .info-item:nth-child(even){padding-left:0}
     .info-item{padding:28px 0}
@@ -673,7 +708,7 @@
       <h2 class="sec-title" data-i18n="about.title">档案</h2>
       <div class="sec-rule"></div>
     </div>
-    <p class="sec-desc reveal" data-i18n="about.desc">四个维度，概括当前阶段的身份、任务、关注点与风格。</p>
+    <p class="sec-desc reveal" data-i18n="about.desc">六个维度，概括当前阶段的身份、任务、关注点、风格、目标与阵地。</p>
 
     <div class="info-grid">
       <div class="info-item reveal">
@@ -695,6 +730,16 @@
         <p class="info-label"><span data-i18n="about.l4">风格</span> <i>d.</i></p>
         <h3 class="info-value" data-i18n="about.v4">轻量便携</h3>
         <p class="info-desc" data-i18n="about.d4">不依赖重型框架与工具链，以最合适的工具完成目标。</p>
+      </div>
+      <div class="info-item reveal">
+        <p class="info-label"><span data-i18n="about.l5">目标</span> <i>e.</i></p>
+        <h3 class="info-value" data-i18n="about.v5">软硬结合</h3>
+        <p class="info-desc" data-i18n="about.d5">长期希望加入认同嵌入式与 AI 结合方向的团队，把交界处的问题做深。</p>
+      </div>
+      <div class="info-item reveal">
+        <p class="info-label"><span data-i18n="about.l6">阵地</span> <i>f.</i></p>
+        <h3 class="info-value" data-i18n="about.v6">GitHub · AtomGit</h3>
+        <p class="info-desc" data-i18n="about.d6">代码与项目持续发布：GitHub @foxxo1001，AtomGit @PZ1888。</p>
       </div>
     </div>
   </div>
@@ -733,6 +778,44 @@
   </div>
 </section>
 
+<!-- 工具与栈 -->
+<section class="stack-sec" id="stack">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-kicker">Stack</span>
+      <h2 class="sec-title" data-i18n="stack.title">工具与栈</h2>
+      <div class="sec-rule"></div>
+    </div>
+    <p class="sec-desc reveal" data-i18n="stack.desc">按方向归组的常用工具——保持轻量，够用就好。</p>
+    <div class="stack-grid">
+      <div class="stack-group reveal">
+        <p class="stack-label" data-i18n="stack.l1">嵌入式</p>
+        <div class="stack-chips">
+          <span class="chip">STM32</span><span class="chip" data-i18n="stack.c1">C 语言</span><span class="chip">Keil · CMake</span><span class="chip">PlatformIO</span><span class="chip" data-i18n="stack.c2">传感器驱动</span><span class="chip" data-i18n="stack.c3">串口通信</span>
+        </div>
+      </div>
+      <div class="stack-group reveal">
+        <p class="stack-label" data-i18n="stack.l2">AI 应用</p>
+        <div class="stack-chips">
+          <span class="chip">AI Agent</span><span class="chip" data-i18n="stack.c4">辅助开发</span><span class="chip" data-i18n="stack.c5">提示词设计</span><span class="chip" data-i18n="stack.c6">工作流整合</span>
+        </div>
+      </div>
+      <div class="stack-group reveal">
+        <p class="stack-label" data-i18n="stack.l3">数学建模</p>
+        <div class="stack-chips">
+          <span class="chip" data-i18n="stack.c7">建模方法</span><span class="chip" data-i18n="stack.c8">编程实现</span><span class="chip" data-i18n="stack.c9">真题复盘</span>
+        </div>
+      </div>
+      <div class="stack-group reveal">
+        <p class="stack-label" data-i18n="stack.l4">工程习惯</p>
+        <div class="stack-chips">
+          <span class="chip">Git</span><span class="chip">Markdown</span><span class="chip">VS Code</span><span class="chip" data-i18n="stack.c10">CLI 优先</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- 理念：逐字点亮 -->
 <section class="idea-sec" id="idea">
   <div class="wrap">
@@ -757,6 +840,9 @@
           <span class="acc-tag" data-i18n="works.t0">嵌入式 · 已发布</span>
           <h3 class="acc-name" data-i18n="works.n0">八路红外循迹小车</h3>
           <p class="acc-desc" data-i18n="works.d0">基于 STM32 的循迹小车：八路红外加权定位、PD 差速转向与弯道降速，支持按键启停与丢线找回，提供 CMake 与 Keil 工程。</p>
+          <div class="acc-chips">
+            <span class="acc-chip" data-i18n="works.k1">八路红外加权</span><span class="acc-chip" data-i18n="works.k2">PD 差速转向</span><span class="acc-chip" data-i18n="works.k3">丢线找回</span><span class="acc-chip">CMake · Keil</span>
+          </div>
           <a class="acc-link" href="https://atomgit.com/PZ1888/xunji_demo_1" target="_blank" rel="noopener noreferrer" data-i18n="works.l0">查看仓库 ↗</a>
         </div>
       </article>
@@ -823,6 +909,8 @@
         <button class="sug" data-i18n="sug2">未来的规划是什么？</button>
         <button class="sug" data-i18n="sug3">怎么联系你？</button>
         <button class="sug" data-i18n="sug4">有作品吗？</button>
+        <button class="sug" data-i18n="sug5">循迹小车是怎么做的？</button>
+        <button class="sug" data-i18n="sug6">这个网站是怎么搭的？</button>
       </div>
 
       <form class="chat-input" id="chatForm">
@@ -835,6 +923,40 @@
   </div>
 </section>
 
+<!-- 关于本站 -->
+<section class="meta-sec" id="meta">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-kicker">Meta</span>
+      <h2 class="sec-title" data-i18n="meta.title">关于本站</h2>
+      <div class="sec-rule"></div>
+    </div>
+    <p class="sec-desc reveal" data-i18n="meta.desc">这个页面本身也是一个作品：由蒲桢手写与维护，以下是它的实现方式。</p>
+    <div class="info-grid">
+      <div class="info-item reveal">
+        <p class="info-label"><span data-i18n="meta.l1">实现</span> <i>e.</i></p>
+        <h3 class="info-value" data-i18n="meta.v1">单文件手写</h3>
+        <p class="info-desc" data-i18n="meta.d1">全部代码写在一个 HTML 文件里——无框架、无构建，CSS 与 JS 均为手写。</p>
+      </div>
+      <div class="info-item reveal">
+        <p class="info-label"><span data-i18n="meta.l2">数字分身</span> <i>f.</i></p>
+        <h3 class="info-value" data-i18n="meta.v2">云端模型 + 本地兜底</h3>
+        <p class="info-desc" data-i18n="meta.d2">Cloudflare Worker 代理大模型；网络不可达时自动降级为本地知识库应答。</p>
+      </div>
+      <div class="info-item reveal">
+        <p class="info-label"><span data-i18n="meta.l3">发布</span> <i>g.</i></p>
+        <h3 class="info-value" data-i18n="meta.v3">Git 驱动</h3>
+        <p class="info-desc" data-i18n="meta.d3">提交即部署：GitHub Pages 自动发布，每次迭代完整可溯。</p>
+      </div>
+      <div class="info-item reveal">
+        <p class="info-label"><span data-i18n="meta.l4">设计</span> <i>h.</i></p>
+        <h3 class="info-value" data-i18n="meta.v4">编辑排版 · 双语</h3>
+        <p class="info-desc" data-i18n="meta.d4">衬线标题配无衬线正文，中英一键切换，移动端完整适配。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- 页脚 -->
 <footer id="contact">
   <div class="wrap">
@@ -843,6 +965,7 @@
     <div class="foot-contact">
       <a class="contact-chip" href="mailto:p3358859283@outlook.com?subject=来自你的个人主页"><span data-i18n="foot.email">写邮件给我</span> <span class="arr">↗</span></a>
       <a class="contact-chip" href="https://github.com/foxxo1001" target="_blank" rel="noopener noreferrer">GitHub · foxxo1001 <span class="arr">↗</span></a>
+      <a class="contact-chip" href="https://atomgit.com/PZ1888" target="_blank" rel="noopener noreferrer">AtomGit · PZ1888 <span class="arr">↗</span></a>
     </div>
     <div class="foot-meta">
       <span data-i18n="footer.copy">© 2026 蒲桢</span>
@@ -913,6 +1036,12 @@
     { keys: ['作品','项目','做过','东西','portfolio','works','project'],
       replyHtml: '已发布第一个完整作品：<a href="https://atomgit.com/PZ1888/xunji_demo_1" target="_blank" rel="noopener noreferrer">基于 STM32 的八路红外循迹小车</a>——八路红外加权定位、PD 差速转向、弯道降速与丢线找回，代码已开源。桌面气象站、Agent 学习流水线与数模复盘手册也在推进中。',
       replyHtmlEn: 'First released work: <a href="https://atomgit.com/PZ1888/xunji_demo_1" target="_blank" rel="noopener noreferrer">an STM32 8-channel IR line-following car</a> — weighted IR positioning, PD differential steering, corner slowdown and line-loss recovery, open source on AtomGit. A desk weather station, agent pipeline and contest retrospectives are also in progress.' },
+    { keys: ['循迹','小车','红外','差速','丢线','pid','pd 控制','pd差速','xunji','line-follower','line follower'],
+      replyHtml: '循迹小车是我第一个完整开源的项目：<a href="https://atomgit.com/PZ1888/xunji_demo_1" target="_blank" rel="noopener noreferrer">xunji_demo_1（AtomGit）</a>。基于 STM32：八路红外传感器加权求出车身与黑线的偏差，PD 控制差速转向修正方向，弯道自动降速；支持按键启停，冲出线时能自动找回。工程同时提供 CMake 与 Keil 两套，并预留编码器、OLED 与串口接口。',
+      replyHtmlEn: 'The line-following car is my first fully open-sourced project: <a href="https://atomgit.com/PZ1888/xunji_demo_1" target="_blank" rel="noopener noreferrer">xunji_demo_1 on AtomGit</a>. STM32-based: an 8-channel IR array computes the car-to-line offset by weighted averaging, PD differential steering corrects the heading, and speed drops automatically in corners. Button start/stop, line-loss recovery, plus both CMake and Keil projects with encoder, OLED and serial interfaces reserved.' },
+    { keys: ['网站','网页','本站','这个站','主页怎么','搭的','建站','website','homepage','this site','this page','frontend','front-end'],
+      reply: '这个页面本身就是我的作品之一：单文件 HTML/CSS/JS 手写，无框架无构建；数字分身由 Cloudflare Worker 代理云端大模型，网络不可达时自动降级为我本地的知识库；每次 git 提交自动部署到 GitHub Pages。',
+      en: "This page is one of my works: a hand-written single-file HTML/CSS/JS site — no frameworks, no build step. My digital twin runs on a Cloudflare Worker proxying a cloud LLM, falling back to my local knowledge base when unreachable. Every git push deploys it to GitHub Pages automatically." },
     { keys: ['嵌入式','单片机','stm32','硬件','底层','电路','embedded','mcu','hardware'],
       reply: '嵌入式是他现在主要在学的东西。学到了哪一步我不好替他细说，想聊细节可以邮件问他。',
       en: "Embedded systems are what he's mainly learning right now. For details I'd rather not speak for him — email him if you're curious." },
@@ -1045,7 +1174,7 @@
     'hero.sub':['电子科学与技术专业大二在读。目前专注于嵌入式开发的学习与实践，备战数学建模竞赛，并持续探索 AI agent 在开发与学习中的应用。推崇轻量、简洁的开发方式。','A sophomore in Electronic Science & Technology. Currently focused on embedded development and preparing for math-modeling contests, while exploring how AI agents can support daily development — with a firm preference for lean, minimal toolchains.'],
     'hero.cta1':['和我的分身聊聊','Chat with my twin'], 'hero.cta2':['看看我的档案','See my profile'],
     'about.title':['档案','Profile'],
-    'about.desc':['四个维度，概括当前阶段的身份、任务、关注点与风格。','Four dimensions covering who I am, what I do, and how I work.'],
+    'about.desc':['六个维度，概括当前阶段的身份、任务、关注点、风格、目标与阵地。','Six dimensions covering who I am, what I do, how I work, and where I am heading.'],
     'about.l1':['身份','Identity'], 'about.v1':['大二在读','Sophomore'],
     'about.d1':['蒲桢，电子科学与技术专业本科在读，软硬件基础兼备。','Pu Zhen, undergraduate in Electronic Science & Technology, with foundations in both hardware and software.'],
     'about.l2':['在做','Currently'], 'about.v2':['嵌入式 × 数模','Embedded × Math Modeling'],
@@ -1054,6 +1183,16 @@
     'about.d3':['关注 AI agent 在开发与学习流程中的应用与效率提升。','Applying AI agents to make development and study workflows faster and steadier.'],
     'about.l4':['风格','Style'], 'about.v4':['轻量便携','Lean & Light'],
     'about.d4':['不依赖重型框架与工具链，以最合适的工具完成目标。','No heavy frameworks or toolchains — the right tool for the task.'],
+    'about.l5':['目标','Goal'], 'about.v5':['软硬结合','Hardware × Software'],
+    'about.d5':['长期希望加入认同嵌入式与 AI 结合方向的团队，把交界处的问题做深。','Long term, to join a team that believes in combining embedded systems with AI — and go deep at that junction.'],
+    'about.l6':['阵地','Channels'], 'about.v6':['GitHub · AtomGit','GitHub · AtomGit'],
+    'about.d6':['代码与项目持续发布：GitHub @foxxo1001，AtomGit @PZ1888。','Code and projects ship continuously: GitHub @foxxo1001 and AtomGit @PZ1888.'],
+    'stack.title':['工具与栈','Stack'],
+    'stack.desc':['按方向归组的常用工具——保持轻量，够用就好。','Tools grouped by direction — kept light, just enough for the job.'],
+    'stack.l1':['嵌入式','Embedded'], 'stack.l2':['AI 应用','Applied AI'], 'stack.l3':['数学建模','Math Modeling'], 'stack.l4':['工程习惯','Engineering'],
+    'stack.c1':['C 语言','C'], 'stack.c2':['传感器驱动','Sensor drivers'], 'stack.c3':['串口通信','Serial & buses'],
+    'stack.c4':['辅助开发','Dev assistance'], 'stack.c5':['提示词设计','Prompt design'], 'stack.c6':['工作流整合','Workflow integration'],
+    'stack.c7':['建模方法','Modeling methods'], 'stack.c8':['编程实现','Coding'], 'stack.c9':['真题复盘','Problem reviews'], 'stack.c10':['CLI 优先','CLI first'],
     'now.title':['正在进行','In Progress'],
     'now.desc':['三条主线并行推进，记录当前阶段的学习与实践重心。','Three parallel tracks — the current focus of my study and practice.'],
     'now.s1':['进行中','Ongoing'], 'now.n1':['嵌入式：从点灯到小系统','Embedded: from blink to a system'],
@@ -1074,6 +1213,17 @@
     'works.t3':['数模 · 更新中','Math Modeling · Updating'], 'works.n3':['数模复盘手册','Contest Retrospectives'],
     'works.d3':['对历年赛题的建模思路与代码实现进行系统复盘，按题型归档，作为核心备赛资料。','Systematic reviews of past problems — models, code and lessons — archived by type for contest preparation.'],
     'works.note':['配图为占位示意，作品完善后将替换为实物照片。','Placeholder images — real photos will replace them as the work is completed.'],
+    'works.k1':['八路红外加权','8-ch IR weighting'], 'works.k2':['PD 差速转向','PD steering'], 'works.k3':['丢线找回','Line recovery'],
+    'meta.title':['关于本站','About This Site'],
+    'meta.desc':['这个页面本身也是一个作品：由蒲桢手写与维护，以下是它的实现方式。','This page is a work of its own — written and maintained by Pu Zhen. Here is how it is built.'],
+    'meta.l1':['实现','Build'], 'meta.v1':['单文件手写','Single-file, hand-written'],
+    'meta.d1':['全部代码写在一个 HTML 文件里——无框架、无构建，CSS 与 JS 均为手写。','Everything lives in one HTML file — no frameworks, no build step, CSS and JS written by hand.'],
+    'meta.l2':['数字分身','Digital twin'], 'meta.v2':['云端模型 + 本地兜底','Cloud model + local fallback'],
+    'meta.d2':['Cloudflare Worker 代理大模型；网络不可达时自动降级为本地知识库应答。','A Cloudflare Worker proxies the LLM; when unreachable, it falls back to a local knowledge base automatically.'],
+    'meta.l3':['发布','Deploy'], 'meta.v3':['Git 驱动','Git-driven'],
+    'meta.d3':['提交即部署：GitHub Pages 自动发布，每次迭代完整可溯。','Every push deploys via GitHub Pages — each iteration fully traceable.'],
+    'meta.l4':['设计','Design'], 'meta.v4':['编辑排版 · 双语','Editorial · Bilingual'],
+    'meta.d4':['衬线标题配无衬线正文，中英一键切换，移动端完整适配。','Serif headlines over sans body — one-tap language switch, fully responsive on mobile.'],
     'chat.title':['数字分身','Digital Twin'],
     'chat.desc':['本区块由数字分身值守，可就近况、规划与方向直接提问。','Staffed by my digital twin — ask about my current work, plans and direction.'],
     'chat.name':['蒲桢的分身',"Pu Zhen's Twin"], 'chat.status':['在线 · 即时回复','Online · instant replies'],
@@ -1082,11 +1232,13 @@
     'sug2':['未来的规划是什么？',"What's the plan ahead?"],
     'sug3':['怎么联系你？','How can I reach you?'],
     'sug4':['有作品吗？','Any works yet?'],
+    'sug5':['循迹小车是怎么做的？','How was the line-follower built?'],
+    'sug6':['这个网站是怎么搭的？','How is this site built?'],
     'chat.ph':['请输入问题…','Type your question…'],
     'foot.m1':['用简单的工具，','Simple tools, '], 'foot.m2':['做可靠的东西','reliable things'], 'foot.m3':['。','.'],
     'cta.q':['有意向？','Interested? '], 'cta.em':['邮件联系','send an email'], 'cta.t':['',''],
     'foot.email':['写邮件给我','Email me'],
-    'foot.tag':['V1.2 原型 · 作品区配图待替换','V1.2 Prototype · work images pending']
+    'foot.tag':['V2.0 手写单文件 · 持续更新','V2.0 Hand-crafted single file · in active development']
   };
   const MQ_ITEMS = {
     zh: ['嵌入式开发','STM32','AI Agent','数学建模','端侧智能','轻量工具链','电子科学与技术'],
