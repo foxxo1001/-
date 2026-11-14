@@ -462,6 +462,7 @@
     filter:grayscale(.92) contrast(1.06) brightness(.96);
     transition:filter .5s ease;
   }
+  svg.acc-img{display:block}
   .acc-item:hover .acc-img,.acc-item.on .acc-img{filter:grayscale(.15) contrast(1.02)}
   .acc-item::after{
     content:"";position:absolute;inset:0;z-index:1;
@@ -520,6 +521,25 @@
   /* ---------- 关于本站 ---------- */
   .meta-sec{padding:104px 0 120px}
   .works-note{margin-top:18px;font-size:12.5px;color:var(--ink-3)}
+
+  /* ---------- 站点日志 ---------- */
+  .site-log{margin-top:64px;border-top:1px solid var(--line)}
+  .site-log-title{
+    font-family:var(--mono);font-size:12px;font-weight:700;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);
+    padding:22px 6px 2px;
+  }
+  .tl-row{
+    display:grid;grid-template-columns:110px 1fr;gap:26px;align-items:baseline;
+    padding:20px 6px;border-bottom:1px solid var(--line);
+    transition:background .3s;
+  }
+  .tl-row:hover{background:var(--accent-soft)}
+  .tl-date{font-family:var(--mono);font-size:12.5px;font-weight:700;letter-spacing:.12em;color:var(--accent)}
+  .tl-text{font-size:14.5px;color:var(--ink-2)}
+  @media (max-width:820px){
+    .tl-row{grid-template-columns:1fr;gap:4px;padding:18px 4px}
+  }
 
   /* ---------- 大 CTA ---------- */
   .big-cta{
@@ -665,8 +685,8 @@
     <h1><span class="cn" id="heroCn"><span class="ch" style="--i:0">你</span><span class="ch" style="--i:1">好</span><span class="ch" style="--i:2">，</span><span class="ch" style="--i:3">我</span><span class="ch" style="--i:4">是</span></span><span class="name" id="heroName"><span class="ltr" style="--i:5">蒲</span><span class="ltr" style="--i:6">桢</span></span><em>.</em></h1>
     <div class="hero-bottom">
       <p class="hero-sub" data-i18n="hero.sub">
-        电子科学与技术专业大二在读。目前专注于嵌入式开发的学习与实践，备战数学建模竞赛，并持续探索
-        AI agent 在开发与学习中的应用。推崇轻量、简洁的开发方式。
+        电子科学与技术专业大二在读。目前专注于嵌入式开发的学习与实践，数学建模竞赛获四川省一等奖，
+        并持续探索 AI agent 在开发与学习中的应用。推崇轻量、简洁的开发方式。
       </p>
       <div class="hero-pills hero-cta">
         <a class="pill pill-dark" href="#chat"><i class="pill-dot"></i><span data-i18n="hero.cta1">和我的分身聊聊</span> <span class="arr">→</span></a>
@@ -719,7 +739,7 @@
       <div class="info-item reveal">
         <p class="info-label"><span data-i18n="about.l2">在做</span> <i>b.</i></p>
         <h3 class="info-value" data-i18n="about.v2">嵌入式 × 数模</h3>
-        <p class="info-desc" data-i18n="about.d2">系统学习嵌入式开发，夯实底层基础；同期备战数学建模竞赛。</p>
+        <p class="info-desc" data-i18n="about.d2">系统学习嵌入式开发，夯实底层基础；数学建模已获四川省一等奖。</p>
       </div>
       <div class="info-item reveal">
         <p class="info-label"><span data-i18n="about.l3">热爱</span> <i>c.</i></p>
@@ -738,8 +758,8 @@
       </div>
       <div class="info-item reveal">
         <p class="info-label"><span data-i18n="about.l6">阵地</span> <i>f.</i></p>
-        <h3 class="info-value" data-i18n="about.v6">GitHub · AtomGit</h3>
-        <p class="info-desc" data-i18n="about.d6">代码与项目持续发布：GitHub @foxxo1001，AtomGit @PZ1888。</p>
+        <h3 class="info-value" data-i18n="about.v6">GitHub · Gitee · AtomGit</h3>
+        <p class="info-desc" data-i18n="about.d6">代码与项目持续发布：GitHub @foxxo1001，Gitee @foxxo，AtomGit @PZ1888。</p>
       </div>
     </div>
   </div>
@@ -763,9 +783,9 @@
         <span class="now-arrow">→</span>
       </div>
       <div class="now-row reveal" data-topic="1">
-        <span class="now-status" data-i18n="now.s2">备战中</span>
-        <h3 class="now-name" data-i18n="now.n2">数学建模竞赛</h3>
-        <p class="now-note" data-i18n="now.d2">负责建模与编程环节，以系统性训练积累实战经验。</p>
+        <span class="now-status" data-i18n="now.s2">已获奖</span>
+        <h3 class="now-name" data-i18n="now.n2">数学建模 · 四川省一等奖</h3>
+        <p class="now-note" data-i18n="now.d2">负责建模与编程环节；历年真题复盘与代码实现已开源。</p>
         <span class="now-arrow">→</span>
       </div>
       <div class="now-row reveal" data-topic="2">
@@ -835,7 +855,46 @@
 
     <div class="acc reveal">
       <article class="acc-item">
-        <img class="acc-img" src="https://picsum.photos/seed/line-follower/900/1300" alt="八路红外循迹小车项目配图" loading="lazy">
+        <svg class="acc-img" viewBox="0 0 600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+          <defs>
+            <pattern id="gA" width="44" height="44" patternUnits="userSpaceOnUse">
+              <path d="M44 0H0V44" fill="none" stroke="rgba(19,26,38,.055)" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="600" height="900" fill="#F6F8FB"/>
+          <rect width="600" height="900" fill="url(#gA)"/>
+          <text x="52" y="96" font-family="JetBrains Mono,Consolas,monospace" font-size="22" font-weight="700" letter-spacing="4" fill="#1B7BF0">FIG. 01</text>
+          <text x="52" y="126" font-family="JetBrains Mono,Consolas,monospace" font-size="12.5" letter-spacing="3" fill="#8A94A6">8-CH IR LINE FOLLOWER</text>
+          <line x1="52" y1="148" x2="268" y2="148" stroke="rgba(19,26,38,.22)" stroke-width="1"/>
+          <!-- 赛道：S 形黑线 -->
+          <path d="M312 862 C312 732 470 692 464 560 C458 430 166 502 174 366 C182 250 312 270 312 44" fill="none" stroke="#131A26" stroke-width="38" stroke-linecap="round"/>
+          <path d="M312 862 C312 732 470 692 464 560 C458 430 166 502 174 366 C182 250 312 270 312 44" fill="none" stroke="#F6F8FB" stroke-width="2" stroke-dasharray="3 15" stroke-linecap="round" opacity=".5"/>
+          <!-- 俯视小车（车头朝上，压线而行） -->
+          <g transform="translate(312 230)">
+            <rect x="-80" y="-64" width="18" height="34" rx="7" fill="#131A26"/>
+            <rect x="62" y="-64" width="18" height="34" rx="7" fill="#131A26"/>
+            <rect x="-80" y="36" width="18" height="34" rx="7" fill="#131A26"/>
+            <rect x="62" y="36" width="18" height="34" rx="7" fill="#131A26"/>
+            <rect x="-60" y="-98" width="120" height="196" rx="16" fill="#FDFEFF" stroke="#131A26" stroke-width="2.5"/>
+            <rect x="-54" y="-116" width="108" height="15" rx="7.5" fill="#131A26"/>
+            <g fill="#1B7BF0">
+              <circle cx="-49" cy="-108.5" r="4.5"/><circle cx="-35" cy="-108.5" r="4.5"/><circle cx="-21" cy="-108.5" r="4.5"/><circle cx="-7" cy="-108.5" r="4.5"/>
+              <circle cx="7" cy="-108.5" r="4.5"/><circle cx="21" cy="-108.5" r="4.5"/><circle cx="35" cy="-108.5" r="4.5"/><circle cx="49" cy="-108.5" r="4.5"/>
+            </g>
+            <path d="M-50 -136 Q0 -160 50 -136" fill="none" stroke="#1B7BF0" stroke-width="1.6" stroke-dasharray="4 6" opacity=".85"/>
+            <path d="M-30 -150 Q0 -162 30 -150" fill="none" stroke="#1B7BF0" stroke-width="1.4" stroke-dasharray="4 6" opacity=".4"/>
+            <rect x="-26" y="-36" width="52" height="62" rx="8" fill="#F6F8FB" stroke="#131A26" stroke-width="2"/>
+            <text x="0" y="-8" text-anchor="middle" font-family="JetBrains Mono,Consolas,monospace" font-size="10" font-weight="700" fill="#131A26">STM32</text>
+            <text x="0" y="10" text-anchor="middle" font-family="JetBrains Mono,Consolas,monospace" font-size="9" font-weight="700" fill="#1B7BF0">PD</text>
+            <rect x="-40" y="44" width="80" height="40" rx="8" fill="#F6F8FB" stroke="rgba(19,26,38,.5)" stroke-width="1.6"/>
+            <text x="0" y="68" text-anchor="middle" font-family="JetBrains Mono,Consolas,monospace" font-size="9" letter-spacing="1" fill="#8A94A6">BATTERY</text>
+          </g>
+          <text x="146" y="52" text-anchor="end" font-family="JetBrains Mono,Consolas,monospace" font-size="12" font-weight="700" letter-spacing="1.5" fill="#4B5566">IR ×8</text>
+          <path d="M150 60 C200 72 236 92 260 110" fill="none" stroke="rgba(19,26,38,.4)" stroke-width="1.4"/>
+          <text x="472" y="300" font-family="JetBrains Mono,Consolas,monospace" font-size="12" font-weight="700" letter-spacing="1.5" fill="#4B5566">PD STEER</text>
+          <path d="M468 308 C436 300 404 272 388 252" fill="none" stroke="rgba(19,26,38,.4)" stroke-width="1.4"/>
+          <text x="52" y="864" font-family="JetBrains Mono,Consolas,monospace" font-size="11" letter-spacing="2" fill="rgba(247,249,252,.85)">WEIGHTED OFFSET · PD DIFFERENTIAL · CORNER SLOWDOWN</text>
+        </svg>
         <div class="acc-panel">
           <span class="acc-tag" data-i18n="works.t0">嵌入式 · 已发布</span>
           <h3 class="acc-name" data-i18n="works.n0">八路红外循迹小车</h3>
@@ -847,7 +906,65 @@
         </div>
       </article>
       <article class="acc-item">
-        <img class="acc-img" src="https://picsum.photos/seed/weather-station/900/1300" alt="桌面气象站项目配图" loading="lazy">
+        <svg class="acc-img" viewBox="0 0 600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+          <defs>
+            <pattern id="gB" width="44" height="44" patternUnits="userSpaceOnUse">
+              <path d="M44 0H0V44" fill="none" stroke="rgba(19,26,38,.055)" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="600" height="900" fill="#F6F8FB"/>
+          <rect width="600" height="900" fill="url(#gB)"/>
+          <text x="52" y="96" font-family="JetBrains Mono,Consolas,monospace" font-size="22" font-weight="700" letter-spacing="4" fill="#1B7BF0">FIG. 02</text>
+          <text x="52" y="126" font-family="JetBrains Mono,Consolas,monospace" font-size="12.5" letter-spacing="3" fill="#8A94A6">DESK WEATHER STATION</text>
+          <line x1="52" y1="148" x2="296" y2="148" stroke="rgba(19,26,38,.22)" stroke-width="1"/>
+          <!-- 装饰：太阳与云 -->
+          <g transform="translate(486 206)" stroke="#131A26" stroke-width="2.2" fill="none" stroke-linecap="round">
+            <circle r="22"/>
+            <path d="M0 -34 V-28 M24 -24 L20 -20 M34 0 H28 M24 24 L20 20 M0 34 V28 M-24 24 L-20 20 M-34 0 H-28 M-24 -24 L-20 -20"/>
+          </g>
+          <g transform="translate(448 272)">
+            <path d="M-44 22 Q-46 6 -30 4 Q-26 -12 -6 -10 Q10 -16 22 -4 Q40 -6 40 10 Q52 14 48 22 Z" fill="#FDFEFF" stroke="#131A26" stroke-width="2.2" stroke-linejoin="round"/>
+          </g>
+          <!-- 主板 -->
+          <rect x="126" y="300" width="348" height="444" rx="24" fill="#FDFEFF" stroke="#131A26" stroke-width="2.5"/>
+          <g fill="none" stroke="#131A26" stroke-width="2">
+            <circle cx="154" cy="328" r="9"/><circle cx="154" cy="328" r="3" fill="rgba(19,26,38,.35)" stroke="none"/>
+            <circle cx="446" cy="328" r="9"/><circle cx="446" cy="328" r="3" fill="rgba(19,26,38,.35)" stroke="none"/>
+            <circle cx="154" cy="716" r="9"/><circle cx="154" cy="716" r="3" fill="rgba(19,26,38,.35)" stroke="none"/>
+            <circle cx="446" cy="716" r="9"/><circle cx="446" cy="716" r="3" fill="rgba(19,26,38,.35)" stroke="none"/>
+          </g>
+          <!-- OLED 屏 -->
+          <rect x="176" y="352" width="248" height="148" rx="10" fill="#131A26"/>
+          <text x="300" y="414" text-anchor="middle" font-family="JetBrains Mono,Consolas,monospace" font-size="30" font-weight="700" fill="#5FA8FF">23.5°C</text>
+          <text x="300" y="444" text-anchor="middle" font-family="JetBrains Mono,Consolas,monospace" font-size="12" letter-spacing="2" fill="rgba(246,248,251,.78)">RH 56%</text>
+          <path d="M196 476 L220 462 L244 468 L268 452 L292 456 L316 442 L340 447 L364 434 L388 440 L412 426" fill="none" stroke="#5FA8FF" stroke-width="1.8" opacity=".9"/>
+          <!-- MCU -->
+          <rect x="186" y="540" width="80" height="80" rx="10" fill="#F6F8FB" stroke="#131A26" stroke-width="2"/>
+          <g stroke="#131A26" stroke-width="1.6">
+            <path d="M202 534 V540 M226 534 V540 M250 534 V540 M202 620 V626 M226 620 V626 M250 620 V626 M180 560 H186 M180 584 H186 M266 560 H272 M266 584 H272"/>
+          </g>
+          <text x="226" y="586" text-anchor="middle" font-family="JetBrains Mono,Consolas,monospace" font-size="13" font-weight="700" fill="#131A26">MCU</text>
+          <!-- 温湿度传感器 -->
+          <rect x="300" y="540" width="80" height="80" rx="10" fill="#F6F8FB" stroke="#131A26" stroke-width="2"/>
+          <line x1="324" y1="556" x2="324" y2="584" stroke="#131A26" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="324" cy="592" r="8" fill="#1B7BF0"/>
+          <path d="M330 560 H340 M330 570 H340 M330 580 H340" stroke="#131A26" stroke-width="1.4"/>
+          <path d="M364 552 Q372 566 364 576 Q356 566 364 552 Z" fill="#1B7BF0" opacity=".6"/>
+          <path d="M382 566 Q388 576 382 583 Q376 576 382 566 Z" fill="#1B7BF0" opacity=".35"/>
+          <text x="340" y="644" text-anchor="middle" font-family="JetBrains Mono,Consolas,monospace" font-size="9.5" letter-spacing="1.5" fill="#8A94A6">TEMP · RH</text>
+          <!-- 排针 -->
+          <g fill="rgba(19,26,38,.65)">
+            <rect x="180" y="698" width="5" height="18"/><rect x="195" y="698" width="5" height="18"/><rect x="210" y="698" width="5" height="18"/><rect x="225" y="698" width="5" height="18"/><rect x="240" y="698" width="5" height="18"/><rect x="255" y="698" width="5" height="18"/><rect x="270" y="698" width="5" height="18"/><rect x="285" y="698" width="5" height="18"/><rect x="300" y="698" width="5" height="18"/><rect x="315" y="698" width="5" height="18"/><rect x="330" y="698" width="5" height="18"/><rect x="345" y="698" width="5" height="18"/><rect x="360" y="698" width="5" height="18"/><rect x="375" y="698" width="5" height="18"/><rect x="390" y="698" width="5" height="18"/><rect x="405" y="698" width="5" height="18"/><rect x="420" y="698" width="5" height="18"/>
+          </g>
+          <text x="278" y="768" text-anchor="middle" font-family="JetBrains Mono,Consolas,monospace" font-size="12" letter-spacing="1.5" fill="#4B5566">UART → HOST</text>
+          <path d="M278 780 V792 M272 785 L278 792 L284 785" fill="none" stroke="#4B5566" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- 标注 -->
+          <text x="118" y="340" text-anchor="end" font-family="JetBrains Mono,Consolas,monospace" font-size="12" font-weight="700" letter-spacing="1.5" fill="#4B5566">OLED</text>
+          <path d="M122 348 C142 360 158 366 178 374" fill="none" stroke="rgba(19,26,38,.4)" stroke-width="1.4"/>
+          <text x="488" y="592" font-family="JetBrains Mono,Consolas,monospace" font-size="12" font-weight="700" letter-spacing="1.5" fill="#4B5566">TEMP / RH</text>
+          <path d="M484 598 C454 598 420 590 384 584" fill="none" stroke="rgba(19,26,38,.4)" stroke-width="1.4"/>
+          <text x="52" y="864" font-family="JetBrains Mono,Consolas,monospace" font-size="11" letter-spacing="2" fill="rgba(247,249,252,.85)">TEMP &amp; HUMIDITY · OLED DISPLAY · SERIAL REPORT</text>
+        </svg>
         <div class="acc-panel">
           <span class="acc-tag" data-i18n="works.t1">嵌入式 · 打磨中</span>
           <h3 class="acc-name" data-i18n="works.n1">桌面气象站</h3>
@@ -855,7 +972,48 @@
         </div>
       </article>
       <article class="acc-item">
-        <img class="acc-img" src="https://picsum.photos/seed/agent-pipeline/900/1300" alt="Agent 学习流水线配图" loading="lazy">
+        <svg class="acc-img" viewBox="0 0 600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+          <defs>
+            <pattern id="gC" width="44" height="44" patternUnits="userSpaceOnUse">
+              <path d="M44 0H0V44" fill="none" stroke="rgba(19,26,38,.055)" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="600" height="900" fill="#F6F8FB"/>
+          <rect width="600" height="900" fill="url(#gC)"/>
+          <text x="52" y="96" font-family="JetBrains Mono,Consolas,monospace" font-size="22" font-weight="700" letter-spacing="4" fill="#1B7BF0">FIG. 03</text>
+          <text x="52" y="126" font-family="JetBrains Mono,Consolas,monospace" font-size="12.5" letter-spacing="3" fill="#8A94A6">AGENT STUDY PIPELINE</text>
+          <line x1="52" y1="148" x2="292" y2="148" stroke="rgba(19,26,38,.22)" stroke-width="1"/>
+          <!-- 节点一：检索 -->
+          <rect x="170" y="216" width="260" height="74" rx="14" fill="#FDFEFF" stroke="#131A26" stroke-width="2"/>
+          <circle cx="212" cy="246" r="12" fill="none" stroke="#131A26" stroke-width="2.2"/>
+          <path d="M221 255 L231 265" stroke="#131A26" stroke-width="2.2" stroke-linecap="round"/>
+          <text x="244" y="248" font-family="JetBrains Mono,Consolas,monospace" font-size="15" font-weight="700" fill="#131A26">RETRIEVE</text>
+          <text x="244" y="270" font-family="JetBrains Mono,Consolas,monospace" font-size="11" fill="#8A94A6">papers · docs · refs</text>
+          <path d="M300 290 V326 M294 318 L300 326 L306 318" fill="none" stroke="#131A26" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- 节点二：生成 -->
+          <rect x="170" y="340" width="260" height="74" rx="14" fill="#FDFEFF" stroke="#131A26" stroke-width="2"/>
+          <path d="M202 367 L211 376 L229 357" fill="none" stroke="#131A26" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="244" y="372" font-family="JetBrains Mono,Consolas,monospace" font-size="15" font-weight="700" fill="#131A26">GENERATE</text>
+          <text x="244" y="394" font-family="JetBrains Mono,Consolas,monospace" font-size="11" fill="#8A94A6">quiz · flashcards</text>
+          <path d="M300 414 V442 M294 434 L300 442 L306 434" fill="none" stroke="#131A26" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- 节点三：整理 -->
+          <rect x="170" y="456" width="260" height="74" rx="14" fill="#FDFEFF" stroke="#131A26" stroke-width="2"/>
+          <path d="M204 482 H228 M204 492 H228 M204 502 H228" stroke="#131A26" stroke-width="2.4" stroke-linecap="round"/>
+          <text x="244" y="488" font-family="JetBrains Mono,Consolas,monospace" font-size="15" font-weight="700" fill="#131A26">ORGANIZE</text>
+          <text x="244" y="510" font-family="JetBrains Mono,Consolas,monospace" font-size="11" fill="#8A94A6">notes · summaries</text>
+          <!-- 迭代回路 -->
+          <path d="M430 493 C478 493 478 377 434 377" fill="none" stroke="#8A94A6" stroke-width="1.6" stroke-dasharray="5 5"/>
+          <path d="M442 370 L432 377 L442 384" fill="none" stroke="#8A94A6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="486" y="440" font-family="JetBrains Mono,Consolas,monospace" font-size="10.5" letter-spacing="2" fill="#8A94A6">LOOP</text>
+          <!-- 汇入：人来决策 -->
+          <path d="M300 530 V576" fill="none" stroke="#1B7BF0" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M292 566 L300 576 L308 566" fill="none" stroke="#1B7BF0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="160" y="586" width="280" height="100" rx="18" fill="rgba(27,123,240,.22)" stroke="#1B7BF0" stroke-width="3"/>
+          <text x="300" y="636" text-anchor="middle" font-family="JetBrains Mono,Consolas,monospace" font-size="20" font-weight="800" fill="#F7F9FC">HUMAN</text>
+          <text x="300" y="662" text-anchor="middle" font-family="JetBrains Mono,Consolas,monospace" font-size="11" letter-spacing="2.5" fill="rgba(247,249,252,.82)">FINAL CALL</text>
+          <text x="300" y="730" text-anchor="middle" font-family="JetBrains Mono,Consolas,monospace" font-size="12.5" letter-spacing="3" fill="#8A94A6">ASSIST — NOT REPLACE</text>
+          <text x="52" y="864" font-family="JetBrains Mono,Consolas,monospace" font-size="11" letter-spacing="2" fill="rgba(247,249,252,.85)">RETRIEVE · GENERATE · ORGANIZE · HUMAN DECIDES</text>
+        </svg>
         <div class="acc-panel">
           <span class="acc-tag" data-i18n="works.t2">AI · 搭建中</span>
           <h3 class="acc-name" data-i18n="works.n2">Agent 学习流水线</h3>
@@ -863,15 +1021,71 @@
         </div>
       </article>
       <article class="acc-item">
-        <img class="acc-img" src="https://picsum.photos/seed/math-notes/900/1300" alt="数模复盘手册配图" loading="lazy">
+        <svg class="acc-img" viewBox="0 0 600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+          <defs>
+            <pattern id="gD" width="44" height="44" patternUnits="userSpaceOnUse">
+              <path d="M44 0H0V44" fill="none" stroke="rgba(19,26,38,.055)" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="600" height="900" fill="#F6F8FB"/>
+          <rect width="600" height="900" fill="url(#gD)"/>
+          <text x="52" y="96" font-family="JetBrains Mono,Consolas,monospace" font-size="22" font-weight="700" letter-spacing="4" fill="#1B7BF0">FIG. 04</text>
+          <text x="52" y="126" font-family="JetBrains Mono,Consolas,monospace" font-size="12.5" letter-spacing="3" fill="#8A94A6">CONTEST RETROSPECTIVES</text>
+          <line x1="52" y1="148" x2="300" y2="148" stroke="rgba(19,26,38,.22)" stroke-width="1"/>
+          <!-- 题型便签 -->
+          <rect x="140" y="222" width="46" height="30" rx="5" fill="#1B7BF0"/>
+          <rect x="198" y="214" width="46" height="30" rx="5" fill="#131A26"/>
+          <rect x="330" y="218" width="46" height="30" rx="5" fill="#8A94A6"/>
+          <rect x="388" y="226" width="46" height="30" rx="5" fill="#1B7BF0" opacity=".75"/>
+          <!-- 摊开手册 -->
+          <path d="M112 252 Q206 240 296 252 L296 590 Q206 602 112 590 Z" fill="#FDFEFF" stroke="#131A26" stroke-width="2.2"/>
+          <path d="M304 252 Q394 240 488 252 L488 590 Q394 602 304 590 Z" fill="#FDFEFF" stroke="#131A26" stroke-width="2.2"/>
+          <path d="M300 244 L300 598" stroke="rgba(19,26,38,.35)" stroke-width="2.5"/>
+          <path d="M100 592 Q206 606 300 594 Q394 606 500 592 L500 612 Q394 626 300 614 Q206 626 100 612 Z" fill="rgba(19,26,38,.08)"/>
+          <!-- 左页：散点与拟合 -->
+          <path d="M142 546 V336 H282" fill="none" stroke="#131A26" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M276 330 L282 336 L276 342 M136 342 L142 336 L148 342" fill="none" stroke="#131A26" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="290" y="340" font-family="Playfair Display,serif" font-style="italic" font-size="13" fill="#4B5566">x</text>
+          <text x="136" y="326" font-family="Playfair Display,serif" font-style="italic" font-size="13" fill="#4B5566">y</text>
+          <g fill="#131A26">
+            <circle cx="162" cy="514" r="4"/><circle cx="188" cy="482" r="4"/><circle cx="214" cy="458" r="4"/><circle cx="242" cy="424" r="4"/><circle cx="264" cy="402" r="4"/><circle cx="276" cy="376" r="4"/>
+          </g>
+          <path d="M152 524 L280 364" stroke="#1B7BF0" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M242 424 V410 M264 402 V390" stroke="rgba(27,123,240,.65)" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <!-- 右页：公式与归档表 -->
+          <text x="396" y="308" text-anchor="middle" font-family="Playfair Display,serif" font-style="italic" font-size="19" font-weight="600" fill="#131A26">y = a·x + b</text>
+          <path d="M332 328 H460" stroke="rgba(19,26,38,.3)" stroke-width="1.4"/>
+          <g stroke="rgba(19,26,38,.4)" stroke-width="1.3">
+            <path d="M332 348 V484 M384 348 V484 M436 348 V484"/>
+            <path d="M332 348 H488 M332 393 H488 M332 438 H488 M332 483 H488"/>
+          </g>
+          <text x="358" y="372" text-anchor="middle" font-family="JetBrains Mono,Consolas,monospace" font-size="9.5" font-weight="700" fill="#8A94A6">TYPE</text>
+          <text x="410" y="372" text-anchor="middle" font-family="JetBrains Mono,Consolas,monospace" font-size="9.5" font-weight="700" fill="#8A94A6">MODEL</text>
+          <text x="462" y="372" text-anchor="middle" font-family="JetBrains Mono,Consolas,monospace" font-size="9.5" font-weight="700" fill="#8A94A6">CODE</text>
+          <text x="358" y="420" text-anchor="middle" font-family="JetBrains Mono,Consolas,monospace" font-size="9" fill="#4B5566">OPT</text>
+          <text x="358" y="464" text-anchor="middle" font-family="JetBrains Mono,Consolas,monospace" font-size="9" fill="#4B5566">EVAL</text>
+          <text x="462" y="566" text-anchor="middle" font-family="Playfair Display,serif" font-size="32" font-weight="600" fill="rgba(27,123,240,.3)">∑</text>
+          <text x="288" y="574" text-anchor="end" font-family="JetBrains Mono,Consolas,monospace" font-size="10" fill="#8A94A6">P.12</text>
+          <text x="312" y="574" font-family="JetBrains Mono,Consolas,monospace" font-size="10" fill="#8A94A6">P.13</text>
+          <!-- 铅笔 -->
+          <g transform="rotate(16 533 470)">
+            <rect x="524" y="352" width="18" height="16" rx="5" fill="rgba(27,123,240,.4)" stroke="#131A26" stroke-width="1.6"/>
+            <rect x="524" y="368" width="18" height="168" rx="2" fill="#FDFEFF" stroke="#131A26" stroke-width="2"/>
+            <path d="M533 368 V536" stroke="rgba(19,26,38,.25)" stroke-width="1.4"/>
+            <path d="M524 536 L542 536 L533 566 Z" fill="#FDFEFF" stroke="#131A26" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M529 556 L533 566 L537 556 Z" fill="#131A26"/>
+          </g>
+          <text x="52" y="864" font-family="JetBrains Mono,Consolas,monospace" font-size="11" letter-spacing="2" fill="rgba(247,249,252,.85)">MODEL · CODE · REVIEW — BY PROBLEM TYPE</text>
+        </svg>
         <div class="acc-panel">
-          <span class="acc-tag" data-i18n="works.t3">数模 · 更新中</span>
+          <span class="acc-tag" data-i18n="works.t3">数模 · 已开源</span>
           <h3 class="acc-name" data-i18n="works.n3">数模复盘手册</h3>
-          <p class="acc-desc" data-i18n="works.d3">对历年赛题的建模思路与代码实现进行系统复盘，按题型归档，作为核心备赛资料。</p>
+          <p class="acc-desc" data-i18n="works.d3">数学建模获四川省一等奖。历年赛题的建模思路与代码实现按题型归档开源，作为备赛与复盘资料。</p>
+          <a class="acc-link" href="https://gitee.com/foxxo/question-c" target="_blank" rel="noopener noreferrer" data-i18n="works.l3">查看仓库 ↗</a>
         </div>
       </article>
     </div>
-    <p class="works-note reveal" data-i18n="works.note">配图为占位示意，作品完善后将替换为实物照片与项目链接。</p>
+    <p class="works-note reveal" data-i18n="works.note">作品配图为手绘示意插画，作品完成后将替换为实物照片与实拍。</p>
   </div>
 </section>
 
@@ -911,6 +1125,8 @@
         <button class="sug" data-i18n="sug4">有作品吗？</button>
         <button class="sug" data-i18n="sug5">循迹小车是怎么做的？</button>
         <button class="sug" data-i18n="sug6">这个网站是怎么搭的？</button>
+        <button class="sug" data-i18n="sug7">你是真人吗？</button>
+        <button class="sug" data-i18n="sug8">怎么入门嵌入式？</button>
       </div>
 
       <form class="chat-input" id="chatForm">
@@ -954,6 +1170,22 @@
         <p class="info-desc" data-i18n="meta.d4">衬线标题配无衬线正文，中英一键切换，移动端完整适配。</p>
       </div>
     </div>
+
+    <div class="site-log reveal">
+      <p class="site-log-title" data-i18n="log.title">站点日志 · Site Log</p>
+      <div class="tl-row">
+        <span class="tl-date">2026-08</span>
+        <p class="tl-text" data-i18n="log.t1">站点上线：单文件手写 V1.2 基线，数字分身接入云端模型，完成移动端适配。</p>
+      </div>
+      <div class="tl-row">
+        <span class="tl-date">2026-10</span>
+        <p class="tl-text" data-i18n="log.t2">首个开源作品「八路红外循迹小车」上站；新增工具栈、档案六维度与关于本站。</p>
+      </div>
+      <div class="tl-row">
+        <span class="tl-date">2026-11</span>
+        <p class="tl-text" data-i18n="log.t3">数学建模获四川省一等奖，数模复盘开源上站；作品配图升级为手绘插画，分身知识库扩充，新增本站日志。</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -965,11 +1197,12 @@
     <div class="foot-contact">
       <a class="contact-chip" href="mailto:p3358859283@outlook.com?subject=来自你的个人主页"><span data-i18n="foot.email">写邮件给我</span> <span class="arr">↗</span></a>
       <a class="contact-chip" href="https://github.com/foxxo1001" target="_blank" rel="noopener noreferrer">GitHub · foxxo1001 <span class="arr">↗</span></a>
+      <a class="contact-chip" href="https://gitee.com/foxxo" target="_blank" rel="noopener noreferrer">Gitee · foxxo <span class="arr">↗</span></a>
       <a class="contact-chip" href="https://atomgit.com/PZ1888" target="_blank" rel="noopener noreferrer">AtomGit · PZ1888 <span class="arr">↗</span></a>
     </div>
     <div class="foot-meta">
       <span data-i18n="footer.copy">© 2026 蒲桢</span>
-      <span class="foot-tag" data-i18n="foot.tag">V1.2 原型 · 作品区配图待替换</span>
+      <span class="foot-tag" data-i18n="foot.tag">V2.1 手绘示意 · 持续更新</span>
     </div>
   </div>
 </footer>
@@ -1031,26 +1264,47 @@
       reply: '说实话这个我不确定，不想替他编。建议直接邮件问他，页脚有联系方式。',
       en: "Honestly, I'm not sure — and I'd rather not make it up. Best to email him directly; the address is in the footer." },
     { keys: ['联系','邮箱','邮件','微信','方式','加你','contact','email','github','reach'],
-      replyHtml: '邮件：<a href="mailto:p3358859283@outlook.com?subject=来自你的个人主页">p3358859283@outlook.com</a>（点击即可发信）。GitHub：<a href="https://github.com/foxxo1001" target="_blank" rel="noopener noreferrer">foxxo1001</a>。拿不准的事，邮件问最靠谱。',
-      replyHtmlEn: 'Email: <a href="mailto:p3358859283@outlook.com?subject=Hello%20from%20your%20page">p3358859283@outlook.com</a> — the link opens your mail client. GitHub: <a href="https://github.com/foxxo1001" target="_blank" rel="noopener noreferrer">foxxo1001</a>. For anything uncertain, email is the safest bet.' },
+      replyHtml: '邮件：<a href="mailto:p3358859283@outlook.com?subject=来自你的个人主页">p3358859283@outlook.com</a>（点击即可发信）。GitHub：<a href="https://github.com/foxxo1001" target="_blank" rel="noopener noreferrer">foxxo1001</a>；Gitee：<a href="https://gitee.com/foxxo" target="_blank" rel="noopener noreferrer">foxxo</a>。拿不准的事，邮件问最靠谱。',
+      replyHtmlEn: 'Email: <a href="mailto:p3358859283@outlook.com?subject=Hello%20from%20your%20page">p3358859283@outlook.com</a> — the link opens your mail client. GitHub: <a href="https://github.com/foxxo1001" target="_blank" rel="noopener noreferrer">foxxo1001</a>; Gitee: <a href="https://gitee.com/foxxo" target="_blank" rel="noopener noreferrer">foxxo</a>. For anything uncertain, email is the safest bet.' },
     { keys: ['作品','项目','做过','东西','portfolio','works','project'],
-      replyHtml: '已发布第一个完整作品：<a href="https://atomgit.com/PZ1888/xunji_demo_1" target="_blank" rel="noopener noreferrer">基于 STM32 的八路红外循迹小车</a>——八路红外加权定位、PD 差速转向、弯道降速与丢线找回，代码已开源。桌面气象站、Agent 学习流水线与数模复盘手册也在推进中。',
-      replyHtmlEn: 'First released work: <a href="https://atomgit.com/PZ1888/xunji_demo_1" target="_blank" rel="noopener noreferrer">an STM32 8-channel IR line-following car</a> — weighted IR positioning, PD differential steering, corner slowdown and line-loss recovery, open source on AtomGit. A desk weather station, agent pipeline and contest retrospectives are also in progress.' },
+      replyHtml: '已发布第一个完整作品：<a href="https://atomgit.com/PZ1888/xunji_demo_1" target="_blank" rel="noopener noreferrer">基于 STM32 的八路红外循迹小车</a>——八路红外加权定位、PD 差速转向、弯道降速与丢线找回，代码已开源。数学建模获四川省一等奖，真题复盘与代码也已开源（Gitee question-c）。桌面气象站与 Agent 学习流水线在推进中。',
+      replyHtmlEn: 'First released work: <a href="https://atomgit.com/PZ1888/xunji_demo_1" target="_blank" rel="noopener noreferrer">an STM32 8-channel IR line-following car</a> — weighted IR positioning, PD differential steering, corner slowdown and line-loss recovery, open source on AtomGit. A provincial first prize in math modeling, with retrospectives and code open-sourced on Gitee (question-c). A desk weather station and an agent pipeline are in progress.' },
+    { keys: ['gitee','question-c','真题','仓库','开源','repo','repository','open source'],
+      reply: '代码分布在三个平台：GitHub @foxxo1001；Gitee @foxxo——数学建模真题复盘 <a href="https://gitee.com/foxxo/question-c" target="_blank" rel="noopener noreferrer">question-c</a> 已开源；AtomGit @PZ1888——<a href="https://atomgit.com/PZ1888/xunji_demo_1" target="_blank" rel="noopener noreferrer">八路红外循迹小车</a>。',
+      en: 'Code lives on three platforms: GitHub @foxxo1001; Gitee @foxxo — math-modeling retrospectives open-sourced at <a href="https://gitee.com/foxxo/question-c" target="_blank" rel="noopener noreferrer">question-c</a>; AtomGit @PZ1888 — the <a href="https://atomgit.com/PZ1888/xunji_demo_1" target="_blank" rel="noopener noreferrer">8-ch IR line-follower</a>.' },
     { keys: ['循迹','小车','红外','差速','丢线','pid','pd 控制','pd差速','xunji','line-follower','line follower'],
       replyHtml: '循迹小车是我第一个完整开源的项目：<a href="https://atomgit.com/PZ1888/xunji_demo_1" target="_blank" rel="noopener noreferrer">xunji_demo_1（AtomGit）</a>。基于 STM32：八路红外传感器加权求出车身与黑线的偏差，PD 控制差速转向修正方向，弯道自动降速；支持按键启停，冲出线时能自动找回。工程同时提供 CMake 与 Keil 两套，并预留编码器、OLED 与串口接口。',
       replyHtmlEn: 'The line-following car is my first fully open-sourced project: <a href="https://atomgit.com/PZ1888/xunji_demo_1" target="_blank" rel="noopener noreferrer">xunji_demo_1 on AtomGit</a>. STM32-based: an 8-channel IR array computes the car-to-line offset by weighted averaging, PD differential steering corrects the heading, and speed drops automatically in corners. Button start/stop, line-loss recovery, plus both CMake and Keil projects with encoder, OLED and serial interfaces reserved.' },
     { keys: ['网站','网页','本站','这个站','主页怎么','搭的','建站','website','homepage','this site','this page','frontend','front-end'],
       reply: '这个页面本身就是我的作品之一：单文件 HTML/CSS/JS 手写，无框架无构建；数字分身由 Cloudflare Worker 代理云端大模型，网络不可达时自动降级为我本地的知识库；每次 git 提交自动部署到 GitHub Pages。',
       en: "This page is one of my works: a hand-written single-file HTML/CSS/JS site — no frameworks, no build step. My digital twin runs on a Cloudflare Worker proxying a cloud LLM, falling back to my local knowledge base when unreachable. Every git push deploys it to GitHub Pages automatically." },
+    { keys: ['分身怎么','你是怎么实现','你怎么会','怎么实现','什么模型','哪个模型','powered by','how do you work','which model'],
+      reply: '我由云端大模型驱动，Cloudflare Worker 做代理（密钥不进前端）；网络不可达时自动降级为页面内置的本地知识库。整个站点就是一个手写的 HTML 文件。',
+      en: "I run on a cloud LLM behind a Cloudflare Worker proxy (no keys in the frontend); when unreachable, I fall back to the local knowledge base built into this page. The whole site is one hand-written HTML file." },
+    { keys: ['你能答','能问什么','能答什么','什么都能问','你能做什么','can i ask','what can you'],
+      reply: '近况、作品、方向、联系方式、这个站的实现——这些我都能答。涉及隐私或我不确定的事，我会直说不知道，并建议邮件问本人。',
+      en: "Current work, projects, direction, contact info, how this site is built — those I can cover. Anything private or uncertain, I'll say I don't know and point you to email him directly." },
+    { keys: ['真人','本人吗','是ai','是 ai','ai吗','ai 吗','机器人','real person','human or ai'],
+      reply: '我不是蒲桢本人，是他的数字分身：云端大模型驱动，Cloudflare Worker 代理，请求失败时降级为本地知识库。他的原则我有保留——不知道的直说，不瞎编。',
+      en: "I'm not Pu Zhen himself — I'm his digital twin: a cloud LLM behind a Cloudflare Worker proxy, falling back to a local knowledge base. I do keep his principle — say so when I don't know, never make things up." },
+    { keys: ['入门','怎么学','如何学','学习路线','路线','自学','新手','从零','roadmap','get started','beginner','how to learn'],
+      reply: '他现在的路径：C 语言打底 → STM32 点灯与外设 → 传感器与串口等通信接口 → 独立做小系统（比如循迹小车）。工具用 Keil、CMake，也在试 PlatformIO。路径因人而异，仅供参考。',
+      en: "His current path: C fundamentals → STM32 blink and peripherals → sensors and common buses → shipping small systems (like the line-follower). Tools: Keil and CMake, plus PlatformIO. Paths differ — take it as one reference." },
     { keys: ['嵌入式','单片机','stm32','硬件','底层','电路','embedded','mcu','hardware'],
       reply: '嵌入式是他现在主要在学的东西。学到了哪一步我不好替他细说，想聊细节可以邮件问他。',
       en: "Embedded systems are what he's mainly learning right now. For details I'd rather not speak for him — email him if you're curious." },
     { keys: ['ai','agent','智能','大模型','人工智能','gpt','llm','intelligence'],
       reply: 'AI 是他长期关注的方向，重点是发展与落地应用；平时也在学着用 AI agent 辅助开发和学习。',
       en: "AI is his long-term focus — its development and real-world applications. He also uses AI agents to support his daily study and development." },
+    { keys: ['怎么备','如何备','备赛','赛前','怎么准备','how to prepare'],
+      reply: '他的备赛方式：历年真题系统复盘，建模思路与代码实现按题型归档，全部开源在 Gitee 的 question-c 仓库。这套方法拿到了四川省一等奖。想交流备赛经验，可以邮件联系。',
+      en: "His approach: systematic retrospectives on past problems — modeling ideas and code archived by type, fully open-sourced in the question-c repo on Gitee. It earned a provincial first prize. Email him to swap notes." },
     { keys: ['数模','建模','比赛','竞赛','数学','math','contest','modeling','competition'],
-      reply: '正在备战数学建模竞赛。',
-      en: "He's preparing for a math-modeling contest." },
+      replyHtml: '数学建模已获四川省一等奖（他负责建模与编程）。历年真题复盘与代码实现按题型归档，开源在 <a href="https://gitee.com/foxxo/question-c" target="_blank" rel="noopener noreferrer">Gitee · question-c</a>。',
+      replyHtmlEn: 'He won a provincial first prize in math modeling (owning the modeling and coding side). Retrospectives and code are archived by type, open-sourced at <a href="https://gitee.com/foxxo/question-c" target="_blank" rel="noopener noreferrer">Gitee · question-c</a>.' },
+    { keys: ['获奖','一等奖','省一','奖项','拿奖','award','prize'],
+      reply: '数学建模拿了四川省一等奖——他负责建模与编程环节。历年真题的复盘与代码按题型归档，开源在 Gitee 的 question-c 仓库。',
+      en: "A provincial first prize in math modeling — he owned the modeling and coding. Past-problem retrospectives and code are archived by type in the question-c repo on Gitee." },
     { keys: ['专业','学校','大几','学生','读什么','学什么专业','major','school','sophomore','study'],
       reply: '电子科学与技术专业，大二在读。',
       en: "Electronic Science & Technology, sophomore year." },
@@ -1063,6 +1317,9 @@
     { keys: ['你好','hello','hi','在吗','嗨','哈喽','hey'],
       reply: '你好，我是蒲桢的数字分身。他在做什么、怎么联系，这些我能答；不确定的我会直说，不瞎编。下面的快捷问题也可以点。',
       en: "Hello — I'm Pu Zhen's digital twin. I can tell you what he's up to and how to reach him; if I'm not sure, I'll say so. The quick questions below work too." },
+    { keys: ['为什么不用','框架','轻量','理念','minimal','framework','philosophy','lean'],
+      reply: '他的理念：好的工具应该越用越轻——少一层框架，多一分专注；把复杂留给机器，把简单留给人。这个站不用框架、单文件手写，就是同一条理由。',
+      en: "His philosophy: good tools should feel lighter the longer you use them — one less framework, one more degree of focus; leave complexity to machines, keep simplicity for people. This framework-free, hand-written single file runs on the same idea." },
     { keys: ['风格','特点','习惯','喜欢','style','habit'],
       reply: '他偏爱轻量、简单的开发方式——这是他自己强调过的。',
       en: "He prefers a lean, simple way of building things — his own words." },
@@ -1171,22 +1428,22 @@
     'avatar.mono':['蒲','Pu'], 'avatar.note':['蒲桢 · EST. 2026','Pu Zhen · EST. 2026'],
     'footer.copy':['© 2026 蒲桢','© 2026 Pu Zhen'],
     'hero.eyebrow':['蒲桢 · Personal Page · 电子科学与技术 · 大二','Pu Zhen · Personal Page · Electronic Science & Tech · Sophomore'],
-    'hero.sub':['电子科学与技术专业大二在读。目前专注于嵌入式开发的学习与实践，备战数学建模竞赛，并持续探索 AI agent 在开发与学习中的应用。推崇轻量、简洁的开发方式。','A sophomore in Electronic Science & Technology. Currently focused on embedded development and preparing for math-modeling contests, while exploring how AI agents can support daily development — with a firm preference for lean, minimal toolchains.'],
+    'hero.sub':['电子科学与技术专业大二在读。目前专注于嵌入式开发的学习与实践，数学建模竞赛获四川省一等奖，并持续探索 AI agent 在开发与学习中的应用。推崇轻量、简洁的开发方式。','A sophomore in Electronic Science & Technology. Currently focused on embedded development — with a provincial first prize in math modeling — while exploring how AI agents can support daily development, with a firm preference for lean, minimal toolchains.'],
     'hero.cta1':['和我的分身聊聊','Chat with my twin'], 'hero.cta2':['看看我的档案','See my profile'],
     'about.title':['档案','Profile'],
     'about.desc':['六个维度，概括当前阶段的身份、任务、关注点、风格、目标与阵地。','Six dimensions covering who I am, what I do, how I work, and where I am heading.'],
     'about.l1':['身份','Identity'], 'about.v1':['大二在读','Sophomore'],
     'about.d1':['蒲桢，电子科学与技术专业本科在读，软硬件基础兼备。','Pu Zhen, undergraduate in Electronic Science & Technology, with foundations in both hardware and software.'],
     'about.l2':['在做','Currently'], 'about.v2':['嵌入式 × 数模','Embedded × Math Modeling'],
-    'about.d2':['系统学习嵌入式开发，夯实底层基础；同期备战数学建模竞赛。','Building embedded fundamentals systematically, while training for math-modeling contests.'],
+    'about.d2':['系统学习嵌入式开发，夯实底层基础；数学建模已获四川省一等奖。','Building embedded fundamentals systematically — with a provincial first prize in math modeling.'],
     'about.l3':['热爱','Into'], 'about.v3':['AI 的应用','Applied AI'],
     'about.d3':['关注 AI agent 在开发与学习流程中的应用与效率提升。','Applying AI agents to make development and study workflows faster and steadier.'],
     'about.l4':['风格','Style'], 'about.v4':['轻量便携','Lean & Light'],
     'about.d4':['不依赖重型框架与工具链，以最合适的工具完成目标。','No heavy frameworks or toolchains — the right tool for the task.'],
     'about.l5':['目标','Goal'], 'about.v5':['软硬结合','Hardware × Software'],
     'about.d5':['长期希望加入认同嵌入式与 AI 结合方向的团队，把交界处的问题做深。','Long term, to join a team that believes in combining embedded systems with AI — and go deep at that junction.'],
-    'about.l6':['阵地','Channels'], 'about.v6':['GitHub · AtomGit','GitHub · AtomGit'],
-    'about.d6':['代码与项目持续发布：GitHub @foxxo1001，AtomGit @PZ1888。','Code and projects ship continuously: GitHub @foxxo1001 and AtomGit @PZ1888.'],
+    'about.l6':['阵地','Channels'], 'about.v6':['GitHub · Gitee · AtomGit','GitHub · Gitee · AtomGit'],
+    'about.d6':['代码与项目持续发布：GitHub @foxxo1001，Gitee @foxxo，AtomGit @PZ1888。','Code and projects ship continuously: GitHub @foxxo1001, Gitee @foxxo and AtomGit @PZ1888.'],
     'stack.title':['工具与栈','Stack'],
     'stack.desc':['按方向归组的常用工具——保持轻量，够用就好。','Tools grouped by direction — kept light, just enough for the job.'],
     'stack.l1':['嵌入式','Embedded'], 'stack.l2':['AI 应用','Applied AI'], 'stack.l3':['数学建模','Math Modeling'], 'stack.l4':['工程习惯','Engineering'],
@@ -1197,8 +1454,8 @@
     'now.desc':['三条主线并行推进，记录当前阶段的学习与实践重心。','Three parallel tracks — the current focus of my study and practice.'],
     'now.s1':['进行中','Ongoing'], 'now.n1':['嵌入式：从点灯到小系统','Embedded: from blink to a system'],
     'now.d1':['系统学习 STM32、传感器与常用通信接口，目标是独立完成小型嵌入式系统。','Working through STM32, sensors and common buses; the goal is to ship a small system independently.'],
-    'now.s2':['备战中','Training'], 'now.n2':['数学建模竞赛','Math-Modeling Contest'],
-    'now.d2':['负责建模与编程环节，以系统性训练积累实战经验。','Owning the modeling and coding side, building experience through deliberate practice.'],
+    'now.s2':['已获奖','Awarded'], 'now.n2':['数学建模 · 四川省一等奖','Math Modeling · Provincial First Prize'],
+    'now.d2':['负责建模与编程环节；历年真题复盘与代码实现已开源。','Owning the modeling and coding side — retrospectives and code open-sourced.'],
     'now.s3':['日常','Daily'], 'now.n3':['AI agent 工作流','AI Agent Pipeline'],
     'now.d3':['构建 agent 辅助工作流：承担检索与整理，核心决策由本人完成。','Building an agent-assisted workflow for research and organization — I retain the final calls.'],
     'works.title':['作品与方向','Works & Directions'],
@@ -1210,10 +1467,11 @@
     'works.d1':['基于单板实现环境感知：温湿度采集、OLED 显示与串口上报，以精简硬件完成核心功能。','A single-board environment monitor: temperature and humidity sensing, OLED display and serial reporting — minimal parts, complete function.'],
     'works.t2':['AI · 搭建中','AI · Building'], 'works.n2':['Agent 学习流水线','Agent Study Pipeline'],
     'works.d2':['将资料检索、测试生成与笔记整理整合为 agent 工作流，定位是辅助而非替代。','Research, test generation and notes — integrated into one agent workflow. Assistance, not replacement.'],
-    'works.t3':['数模 · 更新中','Math Modeling · Updating'], 'works.n3':['数模复盘手册','Contest Retrospectives'],
-    'works.d3':['对历年赛题的建模思路与代码实现进行系统复盘，按题型归档，作为核心备赛资料。','Systematic reviews of past problems — models, code and lessons — archived by type for contest preparation.'],
-    'works.note':['配图为占位示意，作品完善后将替换为实物照片。','Placeholder images — real photos will replace them as the work is completed.'],
+    'works.t3':['数模 · 已开源','Math Modeling · Open-sourced'], 'works.n3':['数模复盘手册','Contest Retrospectives'],
+    'works.d3':['数学建模获四川省一等奖。历年赛题的建模思路与代码实现按题型归档开源，作为备赛与复盘资料。','Provincial first prize in math modeling. Past problems — models, code and lessons — archived by type and open-sourced for review.'],
+    'works.note':['作品配图为手绘示意插画，作品完成后将替换为实物照片。','Figures are hand-drawn illustrations — real photos will follow as the works mature.'],
     'works.k1':['八路红外加权','8-ch IR weighting'], 'works.k2':['PD 差速转向','PD steering'], 'works.k3':['丢线找回','Line recovery'],
+    'works.l3':['查看仓库 ↗','View Repo ↗'],
     'meta.title':['关于本站','About This Site'],
     'meta.desc':['这个页面本身也是一个作品：由蒲桢手写与维护，以下是它的实现方式。','This page is a work of its own — written and maintained by Pu Zhen. Here is how it is built.'],
     'meta.l1':['实现','Build'], 'meta.v1':['单文件手写','Single-file, hand-written'],
@@ -1224,6 +1482,10 @@
     'meta.d3':['提交即部署：GitHub Pages 自动发布，每次迭代完整可溯。','Every push deploys via GitHub Pages — each iteration fully traceable.'],
     'meta.l4':['设计','Design'], 'meta.v4':['编辑排版 · 双语','Editorial · Bilingual'],
     'meta.d4':['衬线标题配无衬线正文，中英一键切换，移动端完整适配。','Serif headlines over sans body — one-tap language switch, fully responsive on mobile.'],
+    'log.title':['站点日志 · Site Log','Site Log'],
+    'log.t1':['站点上线：单文件手写 V1.2 基线，数字分身接入云端模型，完成移动端适配。','Site online: hand-written V1.2 baseline, digital twin wired to a cloud model, mobile-ready.'],
+    'log.t2':['首个开源作品「八路红外循迹小车」上站；新增工具栈、档案六维度与关于本站。','First open-source work — the 8-ch IR line-follower — went live; stack, profile and meta sections added.'],
+    'log.t3':['数学建模获四川省一等奖，数模复盘开源上站；作品配图升级为手绘插画，分身知识库扩充，新增本站日志。','Provincial first prize in math modeling, retrospectives open-sourced; hand-drawn figures, an expanded twin knowledge base, and this site log.'],
     'chat.title':['数字分身','Digital Twin'],
     'chat.desc':['本区块由数字分身值守，可就近况、规划与方向直接提问。','Staffed by my digital twin — ask about my current work, plans and direction.'],
     'chat.name':['蒲桢的分身',"Pu Zhen's Twin"], 'chat.status':['在线 · 即时回复','Online · instant replies'],
@@ -1234,11 +1496,13 @@
     'sug4':['有作品吗？','Any works yet?'],
     'sug5':['循迹小车是怎么做的？','How was the line-follower built?'],
     'sug6':['这个网站是怎么搭的？','How is this site built?'],
+    'sug7':['你是真人吗？','Are you a real person?'],
+    'sug8':['怎么入门嵌入式？','How to get into embedded?'],
     'chat.ph':['请输入问题…','Type your question…'],
     'foot.m1':['用简单的工具，','Simple tools, '], 'foot.m2':['做可靠的东西','reliable things'], 'foot.m3':['。','.'],
     'cta.q':['有意向？','Interested? '], 'cta.em':['邮件联系','send an email'], 'cta.t':['',''],
     'foot.email':['写邮件给我','Email me'],
-    'foot.tag':['V2.0 手写单文件 · 持续更新','V2.0 Hand-crafted single file · in active development']
+    'foot.tag':['V2.1 手绘示意 · 持续更新','V2.1 Hand-drawn figures · in active development']
   };
   const MQ_ITEMS = {
     zh: ['嵌入式开发','STM32','AI Agent','数学建模','端侧智能','轻量工具链','电子科学与技术'],
@@ -1313,7 +1577,7 @@
   /* 正在进行：点击一行 = 让分身代答对应话题 */
   const TOPICS = [
     { zh: '嵌入式方向的进展如何？', en: "How is the embedded track going?" },
-    { zh: '数模备赛的进展如何？', en: "How is the contest preparation going?" },
+    { zh: '数学建模拿了什么奖？', en: 'What award did the math modeling win?' },
     { zh: '请介绍一下 AI agent 工作流', en: 'Please introduce the AI agent pipeline' }
   ];
   document.querySelectorAll('.now-row').forEach(row => {
