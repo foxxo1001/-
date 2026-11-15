@@ -311,6 +311,87 @@
   .info-value{font-family:var(--serif);font-size:27px;font-weight:700;margin-bottom:8px}
   .info-desc{font-size:14.5px;color:var(--ink-2)}
 
+  /* ---------- LAB 实验台 ---------- */
+  .lab-sec{padding:104px 0}
+  .lab-grid{display:grid;grid-template-columns:1.9fr 1fr;gap:16px;align-items:stretch}
+  .lab-card{
+    background:var(--card);border:1px solid var(--line);border-radius:20px;
+    overflow:hidden;position:relative;
+    box-shadow:0 20px 50px -30px rgba(16,24,40,.14);
+  }
+  .lab-tag{
+    font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--ink-3);
+    padding:14px 20px 0;display:flex;justify-content:space-between;align-items:center;gap:10px;
+  }
+  .lab-tag em{color:var(--accent);font-style:normal}
+  .sim-stage{position:relative;margin:10px 20px 0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#F6F8FB}
+  .sim-canvas{display:block;width:100%;height:auto}
+  .sim-hud{
+    position:absolute;top:10px;left:12px;
+    font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.14em;color:var(--ink-3);
+  }
+  .sim-status{
+    position:absolute;top:10px;right:12px;
+    font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.12em;color:var(--ink-2);
+    border:1px solid var(--line);background:rgba(253,254,255,.88);
+    padding:4px 11px;border-radius:999px;transition:color .3s,border-color .3s;
+  }
+  .sim-status.good{color:#1a9e5c;border-color:rgba(26,158,92,.45)}
+  .sim-status.bad{color:#D2483B;border-color:rgba(210,72,59,.45)}
+  .sim-panel{display:flex;gap:18px;flex-wrap:wrap;padding:16px 20px 4px}
+  .sim-slider{flex:1;min-width:170px;font-family:var(--mono)}
+  .sim-slider label{display:flex;justify-content:space-between;font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--ink-2);margin-bottom:8px}
+  .sim-slider label b{color:var(--accent);font-size:12.5px;font-weight:700}
+  .sim-slider input{width:100%;accent-color:var(--accent);height:4px;cursor:pointer}
+  .sim-actions{display:flex;gap:9px;flex-wrap:wrap;padding:14px 20px 6px;align-items:center}
+  .sim-btn{
+    font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;
+    border:1.5px solid var(--ink);background:var(--ink);color:var(--bg);
+    border-radius:999px;padding:9px 18px;cursor:pointer;transition:.22s;
+  }
+  .sim-btn:hover{background:var(--accent);border-color:var(--accent)}
+  .sim-btn.ghost{background:transparent;color:var(--ink-2);border-color:var(--line)}
+  .sim-btn.ghost:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+  .sim-presets{display:flex;gap:7px;margin-left:auto;flex-wrap:wrap}
+  .sim-presets .sim-btn{padding:7px 13px;font-size:10.5px}
+  .scope-row{border-top:1px dashed var(--line);margin-top:10px;padding:12px 20px 16px}
+  .scope-row .lab-tag{padding:0 0 8px}
+  .scope-canvas{display:block;width:100%;height:74px;border:1px solid var(--line);border-radius:10px;background:#10151F}
+  .lab-side{display:flex;flex-direction:column;gap:16px}
+  .lab-side .lab-card{flex:1;display:flex;flex-direction:column}
+  .term{
+    flex:1;margin:12px 20px 16px;background:#10151F;border-radius:12px;
+    padding:14px 16px;font-family:var(--mono);font-size:11.5px;line-height:1.95;
+    color:#7CE0A3;overflow-y:auto;scrollbar-width:none;min-height:198px;
+  }
+  .term::-webkit-scrollbar{display:none}
+  .term .ln{white-space:pre-wrap;word-break:break-all;opacity:0;animation:termIn .3s forwards}
+  .term .t{color:#5A8DB8}
+  .term .ok{color:#7CE0A3}
+  .term .hi{color:#F5C97B;font-weight:700}
+  .term .cur{display:inline-block;width:7px;height:12px;background:#7CE0A3;animation:blink 1.1s steps(1) infinite;vertical-align:-2px}
+  @keyframes termIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+  .led-body{display:flex;align-items:center;gap:16px;padding:14px 20px 18px}
+  .led-board{
+    position:relative;width:118px;height:88px;border-radius:12px;flex-shrink:0;
+    background:#0E2440;border:1px solid rgba(95,168,255,.35);cursor:pointer;user-select:none;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;
+    transition:transform .15s,box-shadow .2s;
+  }
+  .led-board:hover{box-shadow:0 0 0 3px rgba(95,168,255,.18)}
+  .led-board:active{transform:scale(.96)}
+  .led{width:16px;height:16px;border-radius:50%;background:#1E3A5F;transition:.2s}
+  .led.on{background:#5FA8FF;box-shadow:0 0 14px 4px rgba(95,168,255,.55)}
+  .led-label{font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:#8FB8E8}
+  .led-info{font-size:13px;color:var(--ink-2);line-height:1.8}
+  .led-count{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--ink-3);letter-spacing:.1em;margin-top:6px}
+  @media (max-width:820px){
+    .lab-grid{grid-template-columns:1fr}
+    .sim-presets{margin-left:0}
+    .sim-status{font-size:9.5px;padding:3px 9px}
+  }
+
   /* ---------- 数字分身 ---------- */
   .chat-sec{padding:104px 0 140px}
   .chat-card{
@@ -632,7 +713,7 @@
       border-bottom:1px solid var(--line);
       max-height:0;overflow:hidden;transition:max-height .35s ease;
     }
-    .nav.open .nav-links{max-height:264px}
+    .nav.open .nav-links{max-height:340px}
     .nav-links a{padding:15px 28px;border-top:1px solid var(--line)}
     .nav-links a::after{display:none}
     .chat-body{height:300px;padding:20px 16px}
@@ -662,6 +743,7 @@
     <div class="nav-links" id="navLinks">
       <a href="#about" data-i18n="nav.about">档案</a>
       <a href="#works" data-i18n="nav.works">作品</a>
+      <a href="#lab" data-i18n="nav.lab">实验台</a>
       <a href="#chat" data-i18n="nav.chat">数字分身</a>
       <a href="#contact" data-i18n="nav.contact">联系</a>
     </div>
@@ -1089,6 +1171,80 @@
   </div>
 </section>
 
+<!-- LAB 实验台 -->
+<section class="lab-sec" id="lab">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-kicker">Lab</span>
+      <h2 class="sec-title" data-i18n="lab.title">实验台</h2>
+      <div class="sec-rule"></div>
+    </div>
+    <p class="sec-desc reveal" data-i18n="lab.desc">把作品做成可以亲手玩的交互——调一调循迹小车的 PD 参数，看看算法怎么跑；再给这块「主板」上电。</p>
+
+    <div class="lab-grid reveal">
+      <!-- FIG.05 循迹模拟器 -->
+      <div class="lab-card">
+        <div class="lab-tag"><span>FIG. 05 · <em>LINE-FOLLOWER SIM</em></span><span data-i18n="sim.tag">可调参模拟</span></div>
+        <div class="sim-stage">
+          <canvas class="sim-canvas" id="simCanvas" width="700" height="430"></canvas>
+          <div class="sim-hud">8-CH IR · PD DIFFERENTIAL</div>
+          <div class="sim-status" id="simStatus">READY</div>
+        </div>
+        <div class="sim-panel">
+          <div class="sim-slider">
+            <label>Kp <span><b id="kpVal">9.0</b></span></label>
+            <input type="range" id="kpSlider" min="0" max="120" value="90" aria-label="Kp gain">
+          </div>
+          <div class="sim-slider">
+            <label>Kd <span><b id="kdVal">1.0</b></span></label>
+            <input type="range" id="kdSlider" min="0" max="30" value="10" aria-label="Kd gain">
+          </div>
+        </div>
+        <div class="sim-actions">
+          <button class="sim-btn" id="simRun">START</button>
+          <button class="sim-btn ghost" id="simReset">RESET</button>
+          <div class="sim-presets">
+            <button class="sim-btn ghost preset" data-kp="15" data-kd="4" data-i18n="sim.p1">太小</button>
+            <button class="sim-btn ghost preset" data-kp="50" data-kd="4" data-i18n="sim.p2">临界</button>
+            <button class="sim-btn ghost preset" data-kp="90" data-kd="10" data-i18n="sim.p3">推荐</button>
+          </div>
+        </div>
+        <div class="scope-row">
+          <div class="lab-tag"><span data-i18n="sim.scope">偏差响应 · e(t)</span></div>
+          <canvas class="scope-canvas" id="scopeCanvas" width="620" height="74"></canvas>
+        </div>
+        <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+          <path id="trackPath" d="M36 215 C150 60 260 370 380 215 C480 90 600 330 664 215" fill="none"/>
+        </svg>
+      </div>
+
+      <!-- 侧列：串口日志 + 点灯 -->
+      <div class="lab-side">
+        <div class="lab-card">
+          <div class="lab-tag">
+            <span>UART0 · <em>BOOT LOG</em></span>
+            <button class="sim-btn ghost" id="termReboot" style="padding:5px 12px;font-size:10px">REBOOT</button>
+          </div>
+          <div class="term" id="termBox"></div>
+        </div>
+        <div class="lab-card">
+          <div class="lab-tag"><span>GPIO · <em>LED2</em></span></div>
+          <div class="led-body">
+            <div class="led-board" id="ledBoard" role="button" tabindex="0" aria-label="Toggle LED">
+              <div class="led" id="ledDot"></div>
+              <div class="led-label">PC13 · LED2</div>
+            </div>
+            <div class="led-info">
+              <p data-i18n="led.hint">每个嵌入式人的第一课：点灯。按一下这块板载按键。</p>
+              <p class="led-count" id="ledCount">TOGGLES: 0</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- 数字分身 -->
 <section class="chat-sec" id="chat">
   <div class="wrap">
@@ -1218,7 +1374,7 @@
   const navProgress = document.getElementById('navProgress');
   const toTop = document.getElementById('toTop');
   const spyLinks = [...document.querySelectorAll('#navLinks a')];
-  const spySecs = [...document.querySelectorAll('#about,#works,#chat,#contact')];
+  const spySecs = [...document.querySelectorAll('#about,#works,#lab,#chat,#contact')];
   function onScroll(){
     const y = window.scrollY;
     nav.classList.toggle('scrolled', y > 24);
@@ -1424,6 +1580,7 @@
   const I18N = {
     'nav.about':['档案','About'], 'nav.works':['作品','Works'],
     'nav.chat':['数字分身','Digital Twin'], 'nav.contact':['联系','Contact'],
+    'nav.lab':['实验台','Lab'],
     'logo':['蒲桢','Pu Zhen'],
     'avatar.mono':['蒲','Pu'], 'avatar.note':['蒲桢 · EST. 2026','Pu Zhen · EST. 2026'],
     'footer.copy':['© 2026 蒲桢','© 2026 Pu Zhen'],
@@ -1498,6 +1655,12 @@
     'sug6':['这个网站是怎么搭的？','How is this site built?'],
     'sug7':['你是真人吗？','Are you a real person?'],
     'sug8':['怎么入门嵌入式？','How to get into embedded?'],
+    'lab.title':['实验台','Lab'],
+    'lab.desc':['把作品做成可以亲手玩的交互——调一调循迹小车的 PD 参数，看看算法怎么跑；再给这块「主板」上电。','Works you can play with — tune the line-follower PD gains and watch the algorithm respond, then power up the board.'],
+    'sim.tag':['可调参模拟','Interactive sim'],
+    'sim.p1':['太小','Too low'], 'sim.p2':['临界','Edge'], 'sim.p3':['推荐','Tuned'],
+    'sim.scope':['偏差响应 · e(t)','Error response · e(t)'],
+    'led.hint':['每个嵌入式人的第一课：点灯。按一下这块板载按键。',"Every embedded kid's first lesson: blink an LED. Press the onboard button."],
     'chat.ph':['请输入问题…','Type your question…'],
     'foot.m1':['用简单的工具，','Simple tools, '], 'foot.m2':['做可靠的东西','reliable things'], 'foot.m3':['。','.'],
     'cta.q':['有意向？','Interested? '], 'cta.em':['邮件联系','send an email'], 'cta.t':['',''],
@@ -1570,6 +1733,7 @@
     buildHeroName();
     buildMarquee();
     initManifesto();
+    if (window._labSyncLang) window._labSyncLang();
   }
   langBtn.addEventListener('click', () => applyLang(lang === 'zh' ? 'en' : 'zh'));
   try { if (localStorage.getItem('lang') === 'en') applyLang('en'); } catch(e) {}
@@ -1593,6 +1757,258 @@
   document.querySelectorAll('.acc-item').forEach(it =>
     it.addEventListener('click', () => it.classList.toggle('on'))
   );
+
+  /* ---------- LAB 实验台：循迹小车模拟器（八路红外 + PD 差速，简化运动学） ---------- */
+  (function(){
+    const SIM_STATE = {
+      ready:['READY','READY'], run:['RUNNING','RUNNING'], lock:['稳定循迹','LOCKED ON'],
+      osc:['画龙震荡','OSCILLATING'], corr:['纠偏中','CORRECTING'], dead:['冲出赛道','DERAILED']
+    };
+    const simC = document.getElementById('simCanvas'), sctx = simC.getContext('2d');
+    const scopeC = document.getElementById('scopeCanvas'), octx = scopeC.getContext('2d');
+    const statusEl = document.getElementById('simStatus');
+    const kpS = document.getElementById('kpSlider'), kdS = document.getElementById('kdSlider');
+    const kpV = document.getElementById('kpVal'), kdV = document.getElementById('kdVal');
+    const runBtn = document.getElementById('simRun'), resetBtn = document.getElementById('simReset');
+
+    // 赛道中心线：由隐藏 SVG path 提供几何，预采样
+    const tp = document.getElementById('trackPath');
+    const L = tp.getTotalLength(), N = 720, pts = [];
+    for (let i = 0; i <= N; i++){ const p = tp.getPointAtLength(L*i/N); pts.push([p.x, p.y]); }
+    const t0 = Math.atan2(pts[3][1]-pts[0][1], pts[3][0]-pts[0][0]);
+
+    const V = 108;   // 恒速演示：让 PD 参数成为唯一变量
+    const car = {x:0, y:0, h:0, w:0, alive:true};
+    let KP = 9.0, KD = 1.0, prevE = 0, dErrF = 0, lastSign = 1, running = false;
+    let eHist = [], oscSign = [], trail = [], probeHit = [0,0,0,0,0,0,0,0];
+    let statusNow = 'ready', rafId = null, simVisible = false, lastT = 0, nearestIdx = 0;
+
+    function roundRect(c,x,y,w,h,r){
+      c.beginPath(); c.moveTo(x+r,y);
+      c.arcTo(x+w,y,x+w,y+h,r); c.arcTo(x+w,y+h,x,y+h,r);
+      c.arcTo(x,y+h,x,y,r); c.arcTo(x,y,x+w,y,r); c.closePath();
+    }
+    function setStatus(s){
+      statusNow = s;
+      statusEl.textContent = SIM_STATE[s][lang === 'en' ? 1 : 0];
+      statusEl.className = 'sim-status' + (s === 'dead' ? ' bad' : s === 'lock' ? ' good' : '');
+    }
+    function resetCar(){
+      car.x = pts[0][0]; car.y = pts[0][1]; car.h = t0; car.w = 0; car.alive = true;
+      prevE = 0; dErrF = 0; lastSign = 1; eHist = []; oscSign = []; trail = []; nearestIdx = 0;
+      setStatus('ready');
+    }
+    // 最近中心线点：在上次索引附近做窗口搜索
+    function nearest(x, y){
+      let best = 1e18, bi = nearestIdx;
+      for (let d = -70; d <= 70; d++){
+        const j = (nearestIdx + d + N + 1) % (N + 1);
+        const dx = pts[j][0]-x, dy = pts[j][1]-y, dd = dx*dx + dy*dy;
+        if (dd < best){ best = dd; bi = j; }
+      }
+      nearestIdx = bi;
+      return {x: pts[bi][0], y: pts[bi][1]};
+    }
+    function step(dt){
+      // 八路红外二值检测 + 加权定位（复刻真实查表逻辑）
+      const fx = Math.cos(car.h), fy = Math.sin(car.h), rx = -fy, ry = fx;
+      let hits = 0, sum = 0;
+      for (let i = 0; i < 8; i++){
+        const off = -24.5 + i*7;
+        const px = car.x + fx*22 + rx*off;
+        const py = car.y + fy*22 + ry*off;
+        const n = nearest(px, py);
+        const dist = Math.hypot(n.x-px, n.y-py);
+        probeHit[i] = dist < 9 ? 1 : 0;
+        if (probeHit[i]){ hits++; sum += off; }
+      }
+      // 偏差 = 命中探针的平均横向位置；全丢线 → 沿上次方向大偏差（丢线找回）
+      let e;
+      if (hits > 0){ e = sum/hits; if (Math.abs(e) > 1) lastSign = Math.sign(e); }
+      else e = lastSign * 30;
+      const dErrRaw = Math.max(-90, Math.min(90, (e - prevE)/dt));
+      dErrF += (dErrRaw - dErrF) * Math.min(1, dt*10);   // 微分低通
+      prevE = e;
+      // PD 差速转向：δ = Kp·e + Kd·ė
+      let delta = Math.max(-0.5, Math.min(0.5, KP*e*0.006 + KD*dErrF*0.0008));
+      // 转向惯性：角速度向目标趋近——滞后是过猛参数画龙的根源
+      car.w += (delta*5.5 - car.w) * Math.min(1, dt*4.5);
+      if (car.alive){
+        car.h += car.w*dt;
+        car.x += Math.cos(car.h)*V*dt;
+        car.y += Math.sin(car.h)*V*dt;
+        trail.push([car.x, car.y]); if (trail.length > 150) trail.shift();
+      }
+      eHist.push(e); if (eHist.length > 260) eHist.shift();
+      oscSign.push(Math.sign(dErrRaw)); if (oscSign.length > 120) oscSign.shift();
+      // 状态判定
+      if (hits === 0 && Math.abs(e) > 26){ car.alive = false; setStatus('dead'); return; }
+      if (!car.alive){ setStatus('dead'); return; }
+      const flips = oscSign.reduce((a,s,i,arr)=> i && s*arr[i-1] < 0 ? a+1 : a, 0);
+      if (Math.abs(e) > 12) setStatus('osc');
+      else if (Math.abs(e) > 6) setStatus('corr');
+      else setStatus('lock');
+      // 完成一圈：回起点继续
+      if (nearestIdx > N - 14 && Math.hypot(car.x-pts[N][0], car.y-pts[N][1]) < 26){
+        car.x = pts[0][0]; car.y = pts[0][1]; car.h = t0; car.w = 0; trail = []; nearestIdx = 0;
+      }
+    }
+    function drawTrack(){
+      sctx.strokeStyle = '#131A26'; sctx.lineWidth = 18; sctx.lineCap = 'round'; sctx.lineJoin = 'round';
+      sctx.beginPath();
+      pts.forEach((p,i)=> i ? sctx.lineTo(p[0],p[1]) : sctx.moveTo(p[0],p[1]));
+      sctx.stroke();
+      sctx.strokeStyle = 'rgba(246,248,251,.5)'; sctx.lineWidth = 2; sctx.setLineDash([3,15]);
+      sctx.beginPath();
+      pts.forEach((p,i)=> i ? sctx.lineTo(p[0],p[1]) : sctx.moveTo(p[0],p[1]));
+      sctx.stroke();
+      sctx.setLineDash([]);
+    }
+    function drawSim(){
+      const W = simC.width, H = simC.height;
+      sctx.clearRect(0,0,W,H);
+      sctx.strokeStyle = 'rgba(19,26,38,.06)'; sctx.lineWidth = 1;
+      for (let x = 0; x <= W; x += 44){ sctx.beginPath(); sctx.moveTo(x,0); sctx.lineTo(x,H); sctx.stroke(); }
+      for (let y = 0; y <= H; y += 44){ sctx.beginPath(); sctx.moveTo(0,y); sctx.lineTo(W,y); sctx.stroke(); }
+      drawTrack();
+      sctx.fillStyle = '#1B7BF0'; sctx.font = '700 11px JetBrains Mono, Consolas, monospace';
+      sctx.fillText('START', pts[0][0]-16, pts[0][1]-20);
+      if (trail.length > 1){
+        sctx.strokeStyle = 'rgba(27,123,240,.3)'; sctx.lineWidth = 2;
+        sctx.beginPath();
+        trail.forEach((p,i)=> i ? sctx.lineTo(p[0],p[1]) : sctx.moveTo(p[0],p[1]));
+        sctx.stroke();
+      }
+      // 小车
+      sctx.save();
+      sctx.translate(car.x, car.y); sctx.rotate(car.h);
+      sctx.fillStyle = car.alive ? '#FDFEFF' : '#F4D7D3';
+      sctx.strokeStyle = car.alive ? '#131A26' : '#D2483B';
+      sctx.lineWidth = 2;
+      roundRect(sctx, -17, -12, 34, 24, 7); sctx.fill(); sctx.stroke();
+      for (let i = 0; i < 8; i++){
+        sctx.beginPath(); sctx.arc(22, -24.5 + i*7, 3, 0, 7);
+        sctx.fillStyle = probeHit[i] ? '#5FA8FF' : 'rgba(27,123,240,.25)';
+        sctx.fill();
+      }
+      sctx.fillStyle = '#1B7BF0'; sctx.font = '700 7px JetBrains Mono, monospace';
+      sctx.fillText('PD', -6, 3);
+      sctx.restore();
+    }
+    function drawScope(){
+      const W = scopeC.width, H = scopeC.height;
+      octx.clearRect(0,0,W,H);
+      octx.strokeStyle = 'rgba(124,224,163,.15)'; octx.lineWidth = 1;
+      octx.beginPath(); octx.moveTo(0,H/2); octx.lineTo(W,H/2); octx.stroke();
+      for (let x = 40; x < W; x += 40){ octx.beginPath(); octx.moveTo(x,0); octx.lineTo(x,H); octx.stroke(); }
+      if (eHist.length > 1){
+        octx.strokeStyle = '#5FA8FF'; octx.lineWidth = 1.6; octx.lineJoin = 'round';
+        octx.beginPath();
+        eHist.forEach((e,i)=>{
+          const x = i/(259) * W;
+          const y = H/2 - Math.max(-32, Math.min(32, e)) * (H/2/34);
+          i ? octx.lineTo(x,y) : octx.moveTo(x,y);
+        });
+        octx.stroke();
+      }
+    }
+    function loop(t){
+      rafId = null;
+      if (!simVisible || !running) return;
+      const dt = Math.min(0.05, (t - lastT)/1000 || 0.016);
+      lastT = t;
+      step(dt); drawSim(); drawScope();
+      rafId = requestAnimationFrame(loop);
+    }
+    function kick(){ if (!rafId){ lastT = performance.now(); rafId = requestAnimationFrame(loop); } }
+    function syncSliders(){
+      KP = kpS.value/10; KD = kdS.value/10;
+      kpV.textContent = KP.toFixed(1); kdV.textContent = KD.toFixed(1);
+    }
+    kpS.addEventListener('input', syncSliders);
+    kdS.addEventListener('input', syncSliders);
+    runBtn.addEventListener('click', ()=>{
+      if (statusNow === 'dead') resetCar();
+      running = !running;
+      runBtn.textContent = running ? 'PAUSE' : 'START';
+      if (running && statusNow === 'ready') setStatus('run');
+      if (running) kick();
+    });
+    resetBtn.addEventListener('click', ()=>{
+      resetCar(); running = false; runBtn.textContent = 'START'; drawSim(); drawScope();
+    });
+    document.querySelectorAll('.sim-presets .preset').forEach(b =>
+      b.addEventListener('click', ()=>{
+        kpS.value = b.dataset.kp; kdS.value = b.dataset.kd; syncSliders();
+        resetCar(); running = true; runBtn.textContent = 'PAUSE'; setStatus('run'); kick();
+      })
+    );
+    const ioSim = new IntersectionObserver(en=>{
+      en.forEach(x=>{
+        simVisible = x.isIntersecting;
+        if (simVisible && !rafId && !running){ drawSim(); drawScope(); }  // 静态一帧
+        if (simVisible && running) kick();
+      });
+    }, {threshold:.05});
+    ioSim.observe(simC);
+    window._labSyncLang = ()=> setStatus(statusNow);
+    // 调试/演示钩子：同步快进模拟（测试脚本与自动化截图用，不影响正常交互）
+    window._labHook = {
+      setPreset(kp, kd){ kpS.value = kp; kdS.value = kd; syncSliders(); resetCar(); running = true; setStatus('run'); },
+      fastForward(n){ for (let i = 0; i < n; i++) step(1/60); drawSim(); drawScope(); },
+      status(){ return statusNow; }
+    };
+    resetCar(); syncSliders();
+  })();
+
+  /* ---------- LAB：串口启动日志 + 点灯 ---------- */
+  (function(){
+    const termBox = document.getElementById('termBox');
+    const ledDot = document.getElementById('ledDot'), ledBoard = document.getElementById('ledBoard'), ledCount = document.getElementById('ledCount');
+    let bootT = performance.now(), termStarted = false, ledOn = false, ledN = 0;
+    const BOOT_LINES = [
+      ['0.001','SYSTEM BOOT — PuZhen OS v2.1',''],
+      ['0.013','identity .............. sophomore · EST major','ok'],
+      ['0.031','embedded module ....... STM32 / CMake / Keil','ok'],
+      ['0.049','line-follower ......... 8-ch IR · PD steering','ok'],
+      ['0.072','math-modeling ......... PROVINCIAL FIRST PRIZE','hi'],
+      ['0.091','ai agent daemon ....... running (assist mode)','ok'],
+      ['0.107','philosophy ............ fewer layers, more focus',''],
+      ['0.118','all systems nominal — welcome, visitor','ok'],
+    ];
+    function ensureCursor(){
+      let c = termBox.querySelector('.curline');
+      if (!c){ c = document.createElement('div'); c.className = 'ln curline'; c.innerHTML = '<span class="cur"></span>'; termBox.appendChild(c); }
+      return c;
+    }
+    function termLog(t, msg, cls){
+      const div = document.createElement('div');
+      div.className = 'ln';
+      div.innerHTML = '<span class="t">[' + (t||'0.000') + ']</span> <span class="' + (cls||'ok') + '">' + msg + '</span>';
+      termBox.insertBefore(div, ensureCursor());
+      while (termBox.children.length > 40) termBox.removeChild(termBox.firstChild);
+      termBox.scrollTop = termBox.scrollHeight;
+    }
+    function playBoot(){
+      bootT = performance.now();
+      termBox.innerHTML = '';
+      ensureCursor();
+      BOOT_LINES.forEach((ln, i)=> setTimeout(()=> termLog(ln[0], ln[1], ln[2]), 240*i + 150));
+    }
+    const ioTerm = new IntersectionObserver(en=>{
+      en.forEach(x=>{ if (x.isIntersecting && !termStarted){ termStarted = true; playBoot(); ioTerm.disconnect(); } });
+    }, {threshold:.25});
+    ioTerm.observe(termBox);
+    document.getElementById('termReboot').addEventListener('click', playBoot);
+    function toggleLed(){
+      ledOn = !ledOn; ledN++;
+      ledDot.classList.toggle('on', ledOn);
+      ledCount.textContent = 'TOGGLES: ' + ledN;
+      termLog(((performance.now()-bootT)/1000).toFixed(3), 'GPIOC13 toggle -> LED ' + (ledOn ? 'ON' : 'OFF'), ledOn ? 'hi' : 'ok');
+    }
+    ledBoard.addEventListener('click', toggleLed);
+    ledBoard.addEventListener('keydown', e=>{ if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggleLed(); } });
+  })();
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
